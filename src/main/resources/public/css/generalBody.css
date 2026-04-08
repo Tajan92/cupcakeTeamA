@@ -1,8 +1,4 @@
-:root{
-    /* Colors */
-    --background-color:F7F3D4;
-}
 
-.body{
-  background-color: var(--background-color);
+body{
+    background-color: var(--background-color);
 }

@@ -1,0 +1,20 @@
+/* variables.css */
+:root {
+    /* Colors */
+    --background-color: #F7F3D4;
+
+    /* Typography */
+    --font-family: 'playfair display', sans-serif;
+    --font-size-base: 16px;
+    --font-size-lg: 1.25rem;
+    
+    --Logo-phone: 70px;
+    --Logo-web: 100px;
+
+    
+    /* Border radius */
+    --radius-md: 8px;
+}
+
+
+

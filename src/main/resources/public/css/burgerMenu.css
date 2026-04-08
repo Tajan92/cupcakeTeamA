@@ -1,0 +1,39 @@
+
+.burger-menu {
+    background-color: #fdfdfd;
+    border: solid #C97BB2;
+    border-radius: 15px;
+
+    height: 100%;
+    width: 80%;
+    position: fixed;
+    top: 0;
+    left: -900px;
+    display: flex;
+    flex-direction: column;
+    font-size: 3rem;
+    transition: .3s ease;
+    line-height: 120px;
+    z-index: 100;
+    align-items: center;
+    gap: 7%;
+}
+
+.burger-menu a {
+    text-decoration: none;
+    color: #C97BB2;
+    font-size: 100px;
+}
+
+.burger-menu-active {
+    left: 0;
+}
+
+#burger-menu-top {
+    margin-top: 20%;
+}
+
+#burger-menu-bottom {
+    margin-top: auto;
+    margin-bottom: 20%;
+}
