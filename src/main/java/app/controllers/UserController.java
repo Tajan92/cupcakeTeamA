@@ -3,13 +3,15 @@ import app.entities.User;
 import app.exceptions.DatabaseException;
 import app.persistence.ConnectionPool;
 import app.persistence.UserMapper;
+import app.services.UserValidator;
 import io.javalin.Javalin;
 import io.javalin.http.Context;
 import java.util.List;
 
 public class UserController {
     public static void addRoutes(Javalin app, ConnectionPool connectionPool) {
-        app.get("register", ctx -> ctx.render("create-user.html"));
+        app.get("register", ctx -> ctx.render("register.html"));
+        app.get("admin", ctx -> ctx.render("admin.html"));
         app.post("register", ctx -> createUser(ctx, connectionPool));
         app.get("login", ctx -> ctx.render("login.html"));
         app.post("login", ctx -> login(ctx, connectionPool));
@@ -33,15 +35,14 @@ public class UserController {
         String email = ctx.formParam("email");
         String password = ctx.formParam("password");
         String passwordCheck = ctx.formParam("password-check");
-        List<String> messages = app.services.teamA.UserValidator.validate(email, password, passwordCheck);
+        List<String> messages = UserValidator.validate(email, password, passwordCheck);
         if (messages.isEmpty()){
             try {
-                UserMapper.createuser(email, password, connectionPool);
+                UserMapper.createuser(email, password, "user", connectionPool);
                 login(ctx,connectionPool);
-                ctx.redirect("/frontpage");
             } catch (DatabaseException e) {
                 ctx.attribute("msg", e.getMessage());
-                ctx.render("/create-user.html");
+                ctx.render("/register.html");
             }
         } else {
             String message = "| ";
@@ -51,7 +52,7 @@ public class UserController {
                 }
             }
             ctx.attribute("errorMessage", message);
-            ctx.render("create-user.html");
+            ctx.render("register.html");
         }
     }
 
@@ -61,7 +62,11 @@ public class UserController {
         try {
             User user = UserMapper.login(email, password, connectionPool);
             ctx.sessionAttribute("currentUser", user);
-            ctx.redirect("/frontpage");
+            if (user.getRole().equals("admin")){
+                ctx.redirect("/admin");
+            }else {
+                ctx.redirect("/frontpage");
+            }
         } catch (DatabaseException e) {
             ctx.attribute("msg", e.getMessage());
             ctx.render("login.html");

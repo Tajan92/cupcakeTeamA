@@ -12,7 +12,7 @@ public class UserMapper
 
     public static User login(String email, String password, app.persistence.ConnectionPool connectionPool) throws DatabaseException
     {
-        String sql = "select * from user where email=? and password=?";
+        String sql = "select * from users where email=? and password=?";
 
         try (
                 Connection connection = connectionPool.getConnection();
@@ -25,8 +25,9 @@ public class UserMapper
             ResultSet rs = ps.executeQuery();
             if (rs.next())
             {
+                String role = rs.getString("role");
                 int id = rs.getInt("user_id");
-                return new User(id, email, password);
+                return new User(id, email, password, role);
             } else
             {
                 throw new DatabaseException("Fejl i login. Prøv igen");
@@ -38,14 +39,15 @@ public class UserMapper
         }
     }
 
-    public static void createuser(String email, String password, ConnectionPool connectionPool) throws DatabaseException
+    public static void createuser(String email, String password, String role, ConnectionPool connectionPool) throws DatabaseException
     {
-        String sql = "insert into user (email, password) values (?,?)";
+        String sql = "insert into users (password, email, role) values (?,?,?)";
 
         try (Connection connection = connectionPool.getConnection();
              PreparedStatement ps = connection.prepareStatement(sql)) {
-            ps.setString(1, email);
-            ps.setString(2, password);
+            ps.setString(1, password);
+            ps.setString(2, email);
+            ps.setString(3, role);
 
             int rowsAffected = ps.executeUpdate();
             if (rowsAffected != 1) {
