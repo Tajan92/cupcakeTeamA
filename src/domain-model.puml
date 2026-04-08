@@ -1,16 +1,52 @@
 @startuml
 'https://plantuml.com/object-diagram
+!pragma layout smetana
 
-object London
-object Washington
-object Berlin
-object NewYork
+object Main
 
-map CapitalCity {
- UK *-> London
- USA *--> Washington
- Germany *---> Berlin
+object User{
+- userId
+- username
+- password
+- email
+- role
 }
+object Cupcake{
+- cupcakeID
+- cupcakeName
+- cupCakeBottom
+- cupCakeTop
+}
+object CupcakeTop{
+- topping
+- price
+}
+object CupcakeBottom{
+- flavour
+- price
+}
+object UserMapper
+object UserController
+object CupcakeMapper
+object CupcakeController
+object UserValidator
+object ConnectionPool
+object SessionConfig
+object ThymeleafConfig
 
-NewYork --> CapitalCity::USA
+Main -- UserController
+Main -- CupcakeController
+Main -- ConnectionPool
+Main -- ThymeleafConfig
+Main -- SessionConfig
+UserController -- UserMapper
+UserController -- User
+UserMapper -- User
+UserController -- UserValidator
+CupcakeController -- CupcakeMapper
+CupcakeController -- Cupcake
+CupcakeMapper -- Cupcake
+Cupcake -- CupcakeBottom
+Cupcake -- CupcakeTop
+
 @enduml
