@@ -1,0 +1,136 @@
+
+.content {
+    flex: 1; /* This "grows" to fill all available space, pushing the footer down */
+}
+
+
+.frontpage-intro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-family: var(--body-font), serif;
+}
+
+#intro-title {
+    margin-top: 20%;
+    font-size: 3rem;
+}
+
+
+#intro-paragraph {
+    color: var(--main-button-color);
+    font-size: 2.5rem;
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+#order-button {
+    background-color: var(--main-button-color);
+    border-radius: var(--button-border);
+    font-size: 3rem;
+    color: var(--button-text-color);
+    width: 23.25rem;
+    height: 6.2rem;
+    border: none;
+}
+
+.cupcake-highlight {
+    margin-top: 12%;
+    display: flex;
+    justify-content: center;
+}
+
+.cupcake-highlight-box {
+    margin-top: 10%;
+    margin-left: 2%;
+    margin-right: 2%;
+    width: 75%;
+    height: 31.98rem;
+    border-radius: 1.63rem;
+    border: 1.63px solid #E8D8E8;
+    font-family: var(--body-font), serif;
+    background: #FFF;
+}
+
+
+#arrow-left {
+    margin-top: 10%;
+    margin-left: 2%;
+    align-self: center;
+    width: 7.2rem;
+    height: 7.2rem;
+    aspect-ratio: 1/1;
+}
+
+#arrow-right {
+    margin-top: 10%;
+    margin-right: 2%;
+    align-self: center;
+    width: 7.2rem;
+    height: 7.2rem;
+    aspect-ratio: 1/1;
+}
+
+.cupcake-highlight-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.cupcake-highlight-title {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.7rem;
+    margin-left: 3%;
+}
+
+#highlight-box-funbutton{
+    display: flex;
+    justify-content: center; /* Centers text horizontally */
+    align-items: center;     /* Centers text vertically */
+    margin: 0;
+    margin-right: 3%;
+    border-radius: 1.47675rem;
+    background: rgba(201, 123, 178, 0.50);
+    color: #7a567a;
+    font-size: 1.5rem;
+    width: auto;
+    padding-right: 2%;
+    padding-left: 2%;
+    height: 3.7rem;
+}
+
+#highlight-box-title {
+    margin: 0;
+
+    font-size: 3rem;
+}
+
+#highlight-box-flavor {
+    margin: 0;
+    margin-top: 1.3rem;
+    margin-left: 3%;
+    font-size: 1.9rem;
+    color: #7A5A7A;
+}
+
+#highlight-box-price {
+    margin: 0;
+    margin-top: 1.3rem;
+    margin-left: 3%;
+    font-size: 1.7rem;
+    color: #C97BB2;
+}
+
+.cupcake-image-box {
+    justify-self: center;
+    margin-top: 5%;
+}
+
+#cupcake-image {
+    width: 15rem;
+!important;
+    height: 15rem;
+!important;
+}
+

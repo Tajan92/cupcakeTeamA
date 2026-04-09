@@ -62,4 +62,5 @@ public class UserValidator {
     public static List<String> getMessage() {
         return message;
     }
+
 }

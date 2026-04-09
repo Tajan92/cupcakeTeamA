@@ -2,18 +2,21 @@
 :root {
     /* Colors */
     --background-color: #F7F3D4;
+    --main-button-color:#C97BB2;
+    --button-text-color:#ffffff;
 
     /* Typography */
-    --font-family: 'playfair display', sans-serif;
+    --header-font: 'playfair display', sans-serif;
+    --body-font: 'DM sans', sans-serif;
     --font-size-base: 16px;
-    --font-size-lg: 1.25rem;
+    
     
     --Logo-phone: 70px;
     --Logo-web: 100px;
 
     
     /* Border radius */
-    --radius-md: 8px;
+    --button-border: 3.2rem;
 }
 
 
