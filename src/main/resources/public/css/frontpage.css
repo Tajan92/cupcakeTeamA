@@ -1,6 +1,6 @@
 
 .content {
-    flex: 1; /* This "grows" to fill all available space, pushing the footer down */
+    flex: 1;
 }
 
 
@@ -84,10 +84,10 @@
     margin-left: 3%;
 }
 
-#highlight-box-funbutton{
+.highlight-box-funbutton {
     display: flex;
     justify-content: center; /* Centers text horizontally */
-    align-items: center;     /* Centers text vertically */
+    align-items: center; /* Centers text vertically */
     margin: 0;
     margin-right: 3%;
     border-radius: 1.47675rem;
@@ -100,26 +100,24 @@
     height: 3.7rem;
 }
 
-#highlight-box-title {
+.highlight-box-title {
     margin: 0;
-
     font-size: 3rem;
 }
 
-#highlight-box-flavor {
-    margin: 0;
-    margin-top: 1.3rem;
+.highlight-box-flavor {
+    margin: 1.7rem;
     margin-left: 3%;
-    font-size: 1.9rem;
+    font-size: 1.5rem;
     color: #7A5A7A;
 }
 
-#highlight-box-price {
-    margin: 0;
-    margin-top: 1.3rem;
+.highlight-box-price {
+    margin: 1.7rem;
     margin-left: 3%;
-    font-size: 1.7rem;
+    font-size: 1.6rem;
     color: #C97BB2;
+    justify-self: center;
 }
 
 .cupcake-image-box {
@@ -129,8 +127,119 @@
 
 #cupcake-image {
     width: 15rem;
-!important;
     height: 15rem;
-!important;
 }
+
+
+@media (max-width: 1024px) {
+    #highlight-box-center {
+        display: none;
+    }
+
+    #highlight-box-left {
+        display: none;
+    }
+
+    #cupcake-image-right {
+        width: 15rem;
+        height: 15rem;
+    }
+
+    .cupcake-image-box {
+        margin-top: 0;
+    }
+}
+
+@media (min-width: 1024px) {
+    #intro-title {
+        margin-top: 2%;
+        font-size: 2.5rem;
+    }
+
+    #intro-paragraph {
+        font-size: 1.8rem;
+        margin-top: 0.5%;
+        margin-bottom: 1.6%;
+    }
+
+    #order-button {
+        margin-top: 0.5%;
+        font-size: 1.5rem;
+        color: var(--button-text-color);
+        width: 12.25rem;
+        height: 3.2rem;
+        border: none;
+    }
+
+    .cupcake-highlight {
+        margin-top: 0;
+        display: flex;
+        justify-self: center;
+        align-self: flex-start;
+    }
+
+    .cupcake-highlight-box {
+        margin-top: 7%;
+        margin-left: 2%;
+        margin-right: 2%;
+
+        min-width: 55%;
+        height: 40vh;
+        max-height: 40vh;
+        min-height: 40vh;
+        position: relative;
+    }
+
+    .highlight-box-title {
+        font-size: 1.9rem;
+        align-self: center;
+    }
+
+    #arrow-left {
+        display: none;
+    }
+
+    #arrow-right {
+        display: none;
+    }
+
+    .highlight-box-funbutton {
+        font-size: 1rem;
+    }
+
+    .cupcake-highlight-title {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 3%;
+        margin-left: 3%;
+    }
+
+    .highlight-box-price {
+        margin-top: 0;
+    }
+
+    #cupcake-image-left {
+        width: 15rem;
+        height: 15rem;
+    }
+
+    #cupcake-image-center {
+        width: 15rem;
+        height: 15rem;
+    }
+    
+    #cupcake-image-right {
+        width: 15rem;
+        height: 15rem;
+    }
+    .cupcake-image-box {
+        position: absolute;
+        bottom: 1vh;        /* or top: 0, adjust as needed */
+        justify-self: center;
+        margin-top: 0;
+    }
+}
+
+
+
 

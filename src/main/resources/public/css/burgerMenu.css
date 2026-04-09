@@ -1,4 +1,6 @@
 
+
+
 .burger-menu {
     background-color: #fdfdfd;
     border: solid #C97BB2;
@@ -36,4 +38,11 @@
 #burger-menu-bottom {
     margin-top: auto;
     margin-bottom: 20%;
+}
+
+
+@media(min-width:1024px){
+    .burger-menu-picture{
+        display: none;
+    }
 }

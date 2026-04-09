@@ -2,7 +2,10 @@ header{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    
 }
+
+
 
 .burger-menu-picture {
     width: 110px;
@@ -15,6 +18,65 @@ header{
 .logo{
     margin-left: 3%;
     margin-top: 2%;
+    text-decoration: none;
     font-size: var(--Logo-phone);
+    color: black;
+    
+}
+
+.web-menu  {
+    font-size: 1.7rem;
+    font-family: var(--header-font), serif;
+}
+
+#forside{
+    
+    padding: 2rem;
+    max-width: 2% ;
+    text-decoration: none;
+    color: var(--menu-text-color);
+}
+
+#bestil{
+    padding: 2rem;
+    max-width: 2% ;
+    text-decoration: none;
+    color: var(--menu-text-color);
+}
+
+#mine-ordre{
+    padding: 2rem;
+    max-width: 2% ;
+    text-decoration: none;
+    color: var(--menu-text-color);
+}
+
+#om-os{
+    padding: 2rem;
+    max-width: 2% ;
+    text-decoration: none;
+    color: var(--menu-text-color);
+}
+
+#log-ud {
+    padding: 2rem;
+    max-width: 2% ;
+    margin-right: 2rem;
+    text-decoration: none;
+    color: var(--menu-text-color);
+}
+
+@media(max-width:1024px) {
+    .web-menu {
+        display: none;
+    }
+}
+
+@media(min-width: 1024px) {
+    .logo {
+        margin-top: 1%;
+        margin-bottom: 1%;
+    }
+    
 }
 

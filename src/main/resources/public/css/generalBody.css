@@ -8,6 +8,7 @@ body {
     display: flex;
     flex-direction: column;
     margin: 0;
+    overflow: hidden;
 }
 
 main {
@@ -15,7 +16,6 @@ main {
 }
 
 footer {
-    margin-top: 20rem;
     flex-shrink: 0;
     width: 100%;
     height: 10%;
@@ -24,4 +24,15 @@ footer {
     font-family: var(--body-font), serif;
     color: #F7F3D4;
     background-color: var(--main-button-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media(min-width: 1024px) {
+    footer{
+        display: flex;
+        height: 7vh;
+        font-size: 1.7rem;
+    }
 }

@@ -1,9 +1,13 @@
 /* variables.css */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+
 :root {
     /* Colors */
     --background-color: #F7F3D4;
     --main-button-color:#C97BB2;
     --button-text-color:#ffffff;
+    --menu-text-color: #7A5A7A;
 
     /* Typography */
     --header-font: 'playfair display', sans-serif;
