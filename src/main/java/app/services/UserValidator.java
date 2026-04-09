@@ -6,7 +6,7 @@ public class UserValidator {
     static List<String> message = new ArrayList<>();
 
     public static List<String> validate(String email, String password, String passwordCheck) {
-        validateUser(email);
+        validateEmailNotEmpty(email);
         validatePassword(password);
         tooShortPassword(password);
         passwordMustContainNumber(password);
@@ -22,7 +22,7 @@ public class UserValidator {
         }
     }
 
-    public static void validateUser(String email) {
+    public static void validateEmailNotEmpty(String email) {
         if (email.isBlank()) {
             message.add("Email skal udfyldes");
         }
@@ -57,5 +57,9 @@ public class UserValidator {
         if (!password.chars().anyMatch(c -> !Character.isLetterOrDigit(c))) {
             message.add("Adgangskode skal indeholde mindst et specialtegn");
         }
+    }
+
+    public static List<String> getMessage() {
+        return message;
     }
 }
