@@ -176,18 +176,19 @@
         display: flex;
         justify-self: center;
         align-self: flex-start;
+        
     }
 
     .cupcake-highlight-box {
         margin-top: 7%;
-        margin-left: 2%;
-        margin-right: 2%;
+        margin-left: 1%;
+        margin-right: 1%;
 
-        min-width: 55%;
-        height: 40vh;
-        max-height: 40vh;
-        min-height: 40vh;
+        min-width: 45%;
+        height: 315px;
+        
         position: relative;
+        overflow: hidden;
     }
 
     .highlight-box-title {
@@ -218,23 +219,14 @@
         margin-top: 0;
     }
 
-    #cupcake-image-left {
-        width: 15rem;
-        height: 15rem;
+    #cupcake-image-left, #cupcake-image-center, #cupcake-image-right{
+        width: 11rem;
+        height: 11rem;
     }
 
-    #cupcake-image-center {
-        width: 15rem;
-        height: 15rem;
-    }
-    
-    #cupcake-image-right {
-        width: 15rem;
-        height: 15rem;
-    }
     .cupcake-image-box {
         position: absolute;
-        bottom: 1vh;        /* or top: 0, adjust as needed */
+        bottom: 1vh; /* or top: 0, adjust as needed */
         justify-self: center;
         margin-top: 0;
     }
