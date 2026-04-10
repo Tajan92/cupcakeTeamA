@@ -1,0 +1,96 @@
+.admin-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 60vh;
+    padding: 40px 20px;
+}
+
+.big-white-box {
+    background-color: #ffffff;
+    width: 95%;
+    max-width: 1800px;
+    min-height: 60vh;
+    border-radius: 2rem;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 30px;
+    width: 100%;
+}
+
+
+.list-header, .panel-header {
+    background-color: #D18BB8;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    font-family: var(--body-font), sans-serif;
+}
+
+.customer-entry {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.money-button {
+    background-color: #D18BB8;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.customer-label {
+    background-color: #D18BB8;
+    color: white;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    border-radius: 8px;
+    font-size: 1.4rem;
+}
+
+/* Right Panel */
+.order-details-panel {
+    background-color: #D18BB8;
+    border-radius: 15px;
+    padding: 20px;
+    min-height: 400px;
+}
+
+.order-item {
+    background-color: rgba(0, 0, 0, 0.15);
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.delete-btn {
+    background-color: #ff0000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width: 35px;
+    height: 35px;
+    font-weight: bold;
+    cursor: pointer;
+}
