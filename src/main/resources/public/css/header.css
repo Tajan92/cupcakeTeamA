@@ -2,10 +2,7 @@ header{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    
 }
-
-
 
 .burger-menu-picture {
     width: 110px;
@@ -18,31 +15,25 @@ header{
     flex-shrink: 0;
     margin-left: 3%;
     margin-top: 2%;
+    margin-bottom: 2%;
     text-decoration: none;
     font-size: var(--Logo-phone);
     color: black;
-    
 }
 
 .web-menu  {
     font-size: clamp(1.2rem, 1.8vw, 2rem);
-
-
     font-family: var(--header-font), serif;
     text-decoration: none;
 }
 
-#forside, #bestil, #mine-ordre, #om-os {
-    padding: clamp(0.1rem, 1.5vw, 1rem);
+#forside, #bestil, #mine-ordre, #om-os, #log-ud {
+    padding: clamp(0.1rem, 1.4vw, 1rem);
     text-decoration: none;
     color: var(--menu-text-color);
 }
-
 #log-ud {
-    padding: clamp(0.1rem, 0.5vw, 2rem);
-    margin-right: 2rem;
-    text-decoration: none;
-    color: var(--menu-text-color);
+    margin-right: 1.5rem;
 }
 
 @media(max-width:1024px) {
@@ -53,8 +44,7 @@ header{
 
 @media(min-width: 1024px) {
     .logo {
-        margin-bottom: 1%;
+        margin-bottom: 2%;
     }
-    
 }
 
