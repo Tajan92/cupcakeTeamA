@@ -1,0 +1,119 @@
+h1 {
+    text-align: center;
+    font-size: 40px;
+    margin-top: 4rem;
+    font-family: var(--body-font), serif;
+    color: #C97BB2;
+
+}
+
+.cupcake-maker {
+    display: flex;
+}
+
+.cupcake-arrow-left {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    align-items: center;
+    margin-top: 5rem;
+    gap: 1rem;
+}
+
+.cupcake-image {
+    display: flex;
+    width: 40%;
+    justify-content: center;
+    align-items: center;
+}
+
+.custom-cupcake {
+    width: 34rem;
+    height: 34rem;
+}
+
+.cupcake-arrow-right {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    align-items: center;
+    margin-top: 5rem;
+    gap: 1rem;
+}
+
+.right-arrows {
+    width: 8rem;
+    height: 8rem;
+}
+
+.left-arrows {
+    width: 8rem;
+    height: 8rem;
+}
+
+.cupcake-combo {
+    margin-top: 2rem;
+    display: flex;
+    align-self: center;
+    align-items: center;
+    background-color: white;
+    width: 40rem;
+    height: 5rem;
+    justify-content: center;
+    border-radius: 22.8rem;
+}
+
+#cupcake-combo {
+    align-items: center;
+    font-weight: lighter;
+    margin: 0;
+}
+
+.basket-button {
+    margin-top: 2rem;
+    display: flex;
+    align-self: center;
+    align-items: center;
+    background-color: white;
+    width: 20rem;
+    height: 5rem;
+    justify-content: center;
+    border-radius: 22.8rem;
+}
+
+#basket-button {
+    align-items: center;
+    font-weight: lighter;
+    margin: 0;
+}
+
+.checkout-button {
+    margin-top: 2rem;
+    display: flex;
+    align-self: center;
+    align-items: center;
+    background-color: white;
+    width: 50rem;
+    height: 5rem;
+    justify-content: center;
+    border-radius: 22.8rem;
+}
+
+#checkout-button {
+    align-items: center;
+    font-weight: lighter;
+    margin: 0;
+}
+
+.basket-box {
+    align-self: center;
+    margin-top: 1%;
+    margin-left: 2%;
+    margin-right: 2%;
+    width: 85%;
+    height: 25rem;
+    border-radius: 1.63rem;
+    border: 1.63px solid #E8D8E8;
+    font-family: var(--body-font), serif;
+    background: #FFF;
+}
