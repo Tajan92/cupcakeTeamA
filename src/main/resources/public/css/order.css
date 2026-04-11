@@ -69,7 +69,7 @@ h1 {
     margin: 0;
 }
 
-.basket-button {
+.basket-button-mobile {
     margin-top: 2rem;
     display: flex;
     align-self: center;
@@ -81,14 +81,15 @@ h1 {
     border-radius: 22.8rem;
 }
 
-#basket-button {
+.basket-button {
     align-items: center;
     font-weight: lighter;
     margin: 0;
 }
 
-.checkout-button {
+.checkout-button-mobile {
     margin-top: 2rem;
+    margin-bottom: 2rem;
     display: flex;
     align-self: center;
     align-items: center;
@@ -99,7 +100,7 @@ h1 {
     border-radius: 22.8rem;
 }
 
-#checkout-button {
+.checkout-button {
     align-items: center;
     font-weight: lighter;
     margin: 0;
@@ -116,4 +117,126 @@ h1 {
     border: 1.63px solid #E8D8E8;
     font-family: var(--body-font), serif;
     background: #FFF;
+}
+
+h2, h3, .basket-button-web, .checkout-button-web {
+    display: none;
+}
+
+@media (min-width: 1024px) {
+    .cupcake-arrow-left, .basket-button-mobile, .cupcake-arrow-right, .cupcake-combo,
+    .checkout-button-mobile, .basket-box, .overview-mobile {
+        display: none;
+    }
+
+    h1 {
+        margin-top: 0;
+        margin-top: 1rem;
+    }
+
+    h2 {
+        display: flex;
+        margin: 0;
+        margin-top: 0.5rem;
+        justify-self: center;
+        font-family: var(--body-font), serif;
+        color: var(--menu-text-color);
+    }
+
+    h3 {
+        margin: 0;
+        display: flex;
+        color: #C97BB2;
+        font-family: "DM Sans";
+        font-size: 2rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+
+    .cupcake-maker {
+        margin-bottom: 2%;
+    }
+
+    .cupcake-image {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .custom-cupcake {
+        width: 23rem;
+        height: 23rem;
+    }
+
+    .basket-button-web {
+        margin-top: 2rem;
+        display: flex;
+        align-self: center;
+        align-items: center;
+        background-color: white;
+        width: 16rem;
+        height: 4rem;
+        justify-content: center;
+        border-radius: 22.8rem;
+    }
+
+    .side-boxes {
+        display: flex;
+        flex-direction: column;
+        margin-top: 0;
+        margin-left: 2%;
+        margin-right: 2%;
+        width: 40%;
+        min-height: 90%;
+        border-radius: 1.63rem;
+        border: 1.63px solid #E8D8E8;
+        font-family: var(--body-font), serif;
+        background: #FFF;
+        justify-content: space-between;
+    }
+
+    .cupcake-custom-top {
+        align-self: center;
+        margin-top: 1rem;
+        margin-left: 2%;
+        margin-right: 2%;
+        width: 91%;
+        height: 45%;
+        border-radius: 1.63rem;
+        border: 1.63px solid #E8D8E8;
+        font-family: var(--body-font), serif;
+        background-color: #E8D8E8;
+    }
+
+    .cupcake-custom-bottom {
+        align-self: center;
+        margin-top: 0;
+        margin-left: 1rem;
+        margin-right: 1rem;
+        margin-bottom: 1rem;
+        width: 91%;
+        height: 45%;
+        border-radius: 1.63rem;
+        border: 1.63px solid #E8D8E8;
+        font-family: var(--body-font), serif;
+        background-color: #E8D8E8;
+    }
+
+    .checkout-button-web {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        display: flex;
+        align-self: center;
+        align-items: center;
+        background-color: white;
+        width: 80%;
+        height: 5rem;
+        justify-content: center;
+        border-radius: 22.8rem;
+    }
+
+    .overview {
+        margin-top: 1rem;
+        align-self: center;
+    }
 }
