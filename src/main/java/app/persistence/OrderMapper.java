@@ -37,7 +37,7 @@ public class OrderMapper {
     public static ArrayList<Order> getAllOrders(ConnectionPool connectionPool) throws DatabaseException {
         String sql = "SELECT orders.order_id, orders.user_id, order_items.cupcake_id " +
                 "FROM orders " +
-                "LEFT JOIN order_items ON order.order_id = order_items.order_id";
+                "LEFT JOIN order_items ON orders.order_id = order_items.order_id";
         try (
                 Connection connection = connectionPool.getConnection();
                 PreparedStatement preparedStatement = connection.prepareStatement(sql);

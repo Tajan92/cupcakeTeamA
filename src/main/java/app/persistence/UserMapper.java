@@ -76,7 +76,7 @@ public class UserMapper
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 int userId = rs.getInt("user_id");
-                String email = rs.getString("subscription_name");
+                String email = rs.getString("email");
                 users.add(new User(userId, email));
             }
             return users;
