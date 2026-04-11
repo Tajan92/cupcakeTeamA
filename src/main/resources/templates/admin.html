@@ -44,20 +44,20 @@
 
             <div class="customer-sidebar">
                 <div class="list-header">Alle Ordre</div>
-                <div th:each="customer : ${allCustomers}" class="customer-entry">
+                <div th:each="user : ${allUsers}" class="customer-entry">
                     <button class="money-button">$</button>
-                    <div class="customer-label" th:text="'#' + ${customer.id} + ' ' + ${customer.name}">
+                    <div class="customer-label" th:text="'#' + ${user.id} + ' ' + ${user.name}">
                         #123 Morten
                     </div>
                 </div>
             </div>
 
             <div class="order-details-panel">
-                <div class="panel-header" th:text="${selectedCustomer != null ? selectedCustomer.name + 's Orders' : 'Alle ordrer'}">
+                <div class="panel-header" th:text="${selectedUser != null ? selectedUser.email + 's Orders' : 'Alle ordrer'}">
                 </div>
                 <div class="order-item">
                     <th:block th:each="order : ${allOrders}">
-                    <span th:name="orderId" th:value="${order.orderId}" th:text="'#' + ${order.id} + ' ' + ${customer.email} + ' #' + ${order.ref}">
+                    <span th:name="orderId" th:value="${order.orderId}" th:text="'#' + ${order.id} + ' ' + ${user.email} + ' #' + ${user.id}">
                         #1753 morten@live.dk #123
                     </span>
                     <button class="delete-btn" th:onclick="|window.location.href='@{/removeOrder}'|">X</button>

@@ -1,8 +1,16 @@
 package app.controllers;
 
+import app.entities.Order;
+import app.entities.User;
+import app.exceptions.DatabaseException;
 import app.persistence.ConnectionPool;
+import app.persistence.OrderMapper;
+import app.persistence.UserMapper;
 import io.javalin.Javalin;
 import io.javalin.http.Context;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AdminPageController {
 
@@ -11,7 +19,12 @@ public class AdminPageController {
     }
 
 
-    public static void renderAdminPage(Context ctx, ConnectionPool connectionPool){
+    public static void renderAdminPage(Context ctx, ConnectionPool connectionPool) throws DatabaseException {
+        List<User> allUsers = UserMapper.getUserInfo(connectionPool);
+        ctx.attribute("allUsers", allUsers);
 
+        ArrayList<Order> allOrders = OrderMapper.getAllOrders(connectionPool);
+        ctx.attribute("allOrders", allOrders);
+        ctx.render("admin.html");
     }
 }

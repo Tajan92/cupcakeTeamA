@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class UserMapper
 {
@@ -61,6 +62,26 @@ public class UserMapper
                 msg = "Brugernavnet findes allerede. Vælg et andet";
             }
             throw new DatabaseException(msg, e.getMessage());
+        }
+    }
+
+
+    public static ArrayList<User> getUserInfo(ConnectionPool connectionPool) throws DatabaseException {
+        String sql = "SELECT * FROM users";
+        try (
+                Connection connection = connectionPool.getConnection();
+                PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        ) {
+            ArrayList<User> users = new ArrayList<>();
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                int userId = rs.getInt("user_id");
+                String email = rs.getString("subscription_name");
+                users.add(new User(userId, email));
+            }
+            return users;
+        } catch (SQLException e) {
+            throw new DatabaseException("A problem occurred trying to get all users: ", e.getMessage());
         }
     }
 }
