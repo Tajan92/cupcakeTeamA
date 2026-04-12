@@ -56,14 +56,30 @@
     <div class="side-boxes">
         <div class="cupcake-custom-top">
             <h2>Top</h2>
-
+            <div>
+                <div class="flavours-box"><a class="flavours">Chocolate</a></div>
+                <div class="flavours-box"><a class="flavours">Blueberry</a></div>
+                <div class="flavours-box"><a class="flavours">Raspberry</a></div>
+                <div class="flavours-box"><a class="flavours">Crispy</a></div>
+                <div class="flavours-box"><a class="flavours">Strawberry</a></div>
+                <div class="flavours-box"><a class="flavours">Rum & Raisin</a></div>
+                <div class="flavours-box"><a class="flavours">Orange</a></div>
+                <div class="flavours-box"><a class="flavours">Lemon</a></div>
+                <div class="flavours-box"><a class="flavours">Blue Cheese</a></div>
+            </div>
         </div>
-        
+
         <div class="cupcake-custom-bottom">
             <h2>Bund</h2>
-            
+            <form>
+                <div class="flavours-box"><a class="flavours">Vanilla</a></div>
+                <div class="flavours-box"><a class="flavours">Chocolate</a></div>
+                <div class="flavours-box"><a class="flavours">Nutmeg</a></div>
+                <div class="flavours-box"><a class="flavours">Pistachio</a></div>
+                <div class="flavours-box"><a class="flavours">Almond</a></div>
+            </form>
         </div>
-        
+
     </div>
 
     <div class="cupcake-image">
@@ -93,8 +109,40 @@
     </div>
 
     <div class="side-boxes">
-        <div class="overview">
-        <h3>Oversigt</h3>
+        <div class="basket-list-box">
+            <h2>Oversigt</h2>
+
+            <div class="basket-list">
+                <th:block th:each="order : ${basket}">
+                    <div class="basket-list-product-box">
+                        <div class="first-line-styling">
+                            <a class="name-price">1x | Berry dream</a>
+                            <a class="name-price">45kr</a>
+                        </div>
+                        <a class="ingredients">Chocolate + blueberry</a>
+                        <a></a>
+                    </div>
+                    <div class="basket-list-product-box">
+                        <div class="first-line-styling">
+                            <a class="name-price">2x | Marzipan Meadow</a>
+                            <a class="name-price">90kr</a>
+                        </div>
+                        <a class="ingredients">Chocolate + blueberry</a>
+                        <a></a>
+                    </div> 
+                    <div class="basket-list-product-box">
+                        <div class="first-line-styling">
+                            <a class="name-price">2x | Frangipane Fizz</a>
+                            <a class="name-price">90kr</a>
+                        </div>
+                        <a class="ingredients">Chocolate + blueberry</a>
+                        <a></a>
+                    </div>
+                    <a class="basket-info" th:text="${order.getInfoFirst}"></a>
+                    <a class="basket-info" th:text="${order.getInfoSecond}"></a>
+                </th:block>
+            </div>
+
         </div>
         <div class="checkout-button-web">
             <h3 class="checkout-button">Gå til betaling</h3>
