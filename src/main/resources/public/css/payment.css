@@ -57,6 +57,7 @@
     align-items: center;
     justify-content: right;
     margin-right: 1rem;
+    margin-bottom: 1rem;
 }
 @media (min-width: 1024px) {
     .payment-box {
@@ -64,6 +65,7 @@
     }
     .pay-button-box {
         gap: 0.5rem;
+        
         margin-bottom: 1rem;
         width: 10rem;
     }

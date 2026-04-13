@@ -147,18 +147,20 @@ h1 {
     font-weight: 500;
     line-height: normal;
 }
-.basket-list{
+
+.basket-list {
     max-height: 18rem;
     overflow: auto;
 }
 
-h2, h3, .basket-button-web, .checkout-button-web, .basket-load-web {
+h2, h3, .basket-button-web, .checkout-button-web, .basket-load-web, .flavours,
+.pay-button-box, #order-pay-button, .side-boxes, #total-payment-web {
     display: none;
 }
 
 @media (min-width: 1024px) {
     .cupcake-arrow-left, .basket-button-mobile, .cupcake-arrow-right, .cupcake-combo,
-    .checkout-button-mobile, .basket-box, .overview-mobile, .basket-load-mobile {
+    .checkout-button-mobile, .basket-box, .overview-mobile, .basket-load-mobile, #total-payment-mobile {
         display: none;
     }
 
@@ -232,7 +234,7 @@ h2, h3, .basket-button-web, .checkout-button-web, .basket-load-web {
         justify-content: space-between;
     }
 
-    .cupcake-custom-top, .cupcake-custom-bottom{
+    .cupcake-custom-top, .cupcake-custom-bottom {
         align-self: center;
         margin-top: 1rem;
         margin-left: 2%;
@@ -267,7 +269,6 @@ h2, h3, .basket-button-web, .checkout-button-web, .basket-load-web {
         min-height: 70%;
     }
 
-    
 
     .basket-info {
         margin-top: 0.4rem;
@@ -310,6 +311,25 @@ h2, h3, .basket-button-web, .checkout-button-web, .basket-load-web {
         font-weight: 530;
         line-height: normal;
     }
+
+    #order-pay-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        color: var(--main-button-color);
+        height: 3.5rem;
+        border: none;
+        text-decoration: none;
+        width: 100%;
+    }
+
+    #total-payment-web {
+        display: flex;
+        align-items: center;
+        justify-content: right;
+        margin-right: 1rem;
+    }
 }
 
 @media (max-width: 1024px) {
@@ -318,6 +338,15 @@ h2, h3, .basket-button-web, .checkout-button-web, .basket-load-web {
         margin-top: 0.5rem;
         margin-left: 0.5rem;
         margin-right: 0.5rem;
+    }
+
+    #total-payment-mobile {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 2%;
+        margin-right: 2%;
+        width: 85%;
     }
 
     .ingredients {
