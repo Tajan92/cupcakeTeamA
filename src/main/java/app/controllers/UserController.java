@@ -11,7 +11,6 @@ import java.util.List;
 public class UserController {
     public static void addRoutes(Javalin app, ConnectionPool connectionPool) {
         app.get("register", ctx -> ctx.render("register.html"));
-        app.get("admin", ctx -> ctx.render("admin.html"));
         app.post("register", ctx -> createUser(ctx, connectionPool));
         app.get("login", ctx -> ctx.render("login.html"));
         app.post("login", ctx -> login(ctx, connectionPool));
@@ -67,7 +66,7 @@ public class UserController {
             User user = UserMapper.login(email, password, connectionPool);
             ctx.sessionAttribute("currentUser", user);
             if (user.getRole().equals("admin")){
-                ctx.redirect("/admin");
+                ctx.redirect("/renderAdminPage");
             }else {
                 ctx.redirect("/frontpage");
             }
