@@ -1,0 +1,308 @@
+h1 {
+    text-align: center;
+    font-size: 40px;
+    margin-top: 4rem;
+    font-family: var(--body-font), serif;
+    color: #C97BB2;
+
+}
+
+.cupcake-maker {
+    display: flex;
+}
+
+.cupcake-arrow-left {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    align-items: center;
+    margin-top: 5rem;
+    gap: 1rem;
+}
+
+.cupcake-image {
+    display: flex;
+    width: 40%;
+    justify-content: center;
+    align-items: center;
+}
+
+.custom-cupcake {
+    width: 34rem;
+    height: 34rem;
+}
+
+.cupcake-arrow-right {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    align-items: center;
+    margin-top: 5rem;
+    gap: 1rem;
+}
+
+.right-arrows {
+    width: 8rem;
+    height: 8rem;
+}
+
+.left-arrows {
+    width: 8rem;
+    height: 8rem;
+}
+
+.cupcake-combo {
+    margin-top: 2rem;
+    display: flex;
+    align-self: center;
+    align-items: center;
+    background-color: white;
+    width: 40rem;
+    height: 5rem;
+    justify-content: center;
+    border-radius: 22.8rem;
+}
+
+#cupcake-combo {
+    align-items: center;
+    font-weight: lighter;
+    margin: 0;
+}
+
+.basket-button-mobile {
+    margin-top: 2rem;
+    display: flex;
+    align-self: center;
+    align-items: center;
+    background-color: white;
+    width: 20rem;
+    height: 5rem;
+    justify-content: center;
+    border-radius: 22.8rem;
+}
+
+.basket-button {
+    align-items: center;
+    font-weight: lighter;
+    margin: 0;
+}
+
+.checkout-button-mobile {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    display: flex;
+    align-self: center;
+    align-items: center;
+    background-color: white;
+    width: 50rem;
+    height: 5rem;
+    justify-content: center;
+    border-radius: 22.8rem;
+}
+
+.checkout-button {
+    align-items: center;
+    font-weight: lighter;
+    margin: 0;
+}
+
+.basket-box {
+    align-self: center;
+    margin-top: 1%;
+    margin-left: 2%;
+    margin-right: 2%;
+    width: 85%;
+    height: 25rem;
+    border-radius: 1.63rem;
+    border: 1.63px solid #E8D8E8;
+    font-family: var(--body-font), serif;
+    background: #FFF;
+}
+
+h2, h3, .basket-button-web, .checkout-button-web {
+    display: none;
+}
+
+@media (min-width: 1024px) {
+    .cupcake-arrow-left, .basket-button-mobile, .cupcake-arrow-right, .cupcake-combo,
+    .checkout-button-mobile, .basket-box, .overview-mobile {
+        display: none;
+    }
+
+    h1 {
+        margin-top: 0;
+        margin-top: 1rem;
+    }
+
+    h2 {
+        display: flex;
+        margin: 0;
+        margin-top: 0.5rem;
+        justify-self: center;
+        font-family: var(--body-font), serif;
+        color: var(--menu-text-color);
+    }
+
+    h3 {
+        margin: 0;
+        display: flex;
+        color: #C97BB2;
+        font-family: "DM Sans", serif;
+        font-size: 2rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+
+    .cupcake-maker {
+        margin-bottom: 2%;
+    }
+
+    .cupcake-image {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .custom-cupcake {
+        width: 23rem;
+        height: 23rem;
+    }
+
+    .basket-button-web {
+        margin-top: 2rem;
+        display: flex;
+        align-self: center;
+        align-items: center;
+        background-color: white;
+        width: 16rem;
+        height: 4rem;
+        justify-content: center;
+        border-radius: 22.8rem;
+    }
+
+    .side-boxes {
+        display: flex;
+        flex-direction: column;
+        margin-top: 0;
+        margin-left: 2%;
+        margin-right: 2%;
+        width: 40%;
+        min-height: 90%;
+        border-radius: 1.63rem;
+        border: 1.63px solid #E8D8E8;
+        font-family: var(--body-font), serif;
+        background: #FFF;
+        justify-content: space-between;
+    }
+
+    .cupcake-custom-top, .cupcake-custom-bottom, .basket-list-box {
+        align-self: center;
+        margin-top: 1rem;
+        margin-left: 2%;
+        margin-right: 2%;
+        width: 91%;
+        height: 45%;
+        border-radius: 1.63rem;
+        border: 1.63px solid #E8D8E8;
+        font-family: var(--body-font), serif;
+        background-color: #E8D8E8;
+    }
+
+    .cupcake-custom-bottom {
+        margin-bottom: 1rem;
+    }
+
+    .checkout-button-web {
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+        display: flex;
+        align-self: center;
+        align-items: center;
+        background-color: white;
+        width: 80%;
+        height: 5rem;
+        justify-content: center;
+        border-radius: 22.8rem;
+    }
+
+    .basket-list-box {
+        margin-top: 1rem;
+        min-height: 70%;
+    }
+
+    .basket-list {
+        display: flex;
+        flex-direction: column;
+        font-size: 1.2rem;
+        font-style: normal;
+        font-weight: 530;
+        line-height: normal;
+    }
+
+    .basket-info {
+        margin-top: 0.4rem;
+        margin-right: 0.2rem;
+        margin-left: 0.2rem;
+    }
+
+    .basket-list-product-box {
+        display: flex;
+        flex-direction: column;
+        margin: 0.2rem;
+        margin-top: 0.5rem;
+        min-width: 90%;
+        min-height: 2rem;
+        background-color: white;
+        border-radius: 22.8rem;
+    }
+
+    .first-line-styling {
+        display: flex;
+        justify-content: space-between;
+        margin-left: 1rem;
+        margin-right: 1rem;
+        margin-top: 0.5rem;
+    }
+    .name-price {
+        color: var(--menu-text-color);
+        font-family: "DM Sans", serif;
+        font-size: 1.625rem;
+        font-style: normal;
+        font-weight: 530;
+        line-height: normal;
+    }
+    
+    .ingredients {
+        margin-left: 3.7rem;
+        color: #C97BB2;
+        font-family: "DM Sans", serif;
+        font-size: 1.4rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+    }
+
+    .flavours-box {
+        margin: 0.2rem;
+        margin-top: 0.5rem;
+        display: inline-table;
+        min-width: 25%;
+        min-height: 2.5rem;
+        background-color: white;
+        border-radius: 22.8rem;
+    }
+
+    .flavours {
+        margin: 0.3rem;
+        display: flex;
+        align-self: center;
+        justify-self: center;
+
+        color: var(--menu-text-color);
+        font-family: "DM Sans", serif;
+        font-size: 1.625rem;
+        font-style: normal;
+        font-weight: 530;
+        line-height: normal;
+    }
+}

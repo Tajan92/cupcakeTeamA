@@ -226,7 +226,7 @@
 
     .cupcake-image-box {
         position: absolute;
-        bottom: 1vh; /* or top: 0, adjust as needed */
+        bottom: 1vh;
         justify-self: center;
         margin-top: 0;
     }

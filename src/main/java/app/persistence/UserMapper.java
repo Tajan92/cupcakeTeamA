@@ -40,15 +40,16 @@ public class UserMapper
         }
     }
 
-    public static void createuser(String email, String password, String role, ConnectionPool connectionPool) throws DatabaseException
+    public static void createuser(String email, String password, String role, double balance, ConnectionPool connectionPool) throws DatabaseException
     {
-        String sql = "insert into users (password, email, role) values (?,?,?)";
+        String sql = "insert into users (password, email, role, balance) values (?,?,?,?)";
 
         try (Connection connection = connectionPool.getConnection();
              PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setString(1, password);
             ps.setString(2, email);
             ps.setString(3, role);
+            ps.setDouble(4, balance);
 
             int rowsAffected = ps.executeUpdate();
             if (rowsAffected != 1) {
