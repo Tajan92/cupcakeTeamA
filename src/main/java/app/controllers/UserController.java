@@ -42,7 +42,7 @@ public class UserController {
         List<String> messages = UserValidator.validate(email, password, passwordCheck);
         if (messages.isEmpty()){
             try {
-                UserMapper.createuser(email, password, "user", connectionPool);
+                UserMapper.createuser(email, password, "user", 0, connectionPool);
                 login(ctx,connectionPool);
             } catch (DatabaseException e) {
                 ctx.attribute("msg", e.getMessage());

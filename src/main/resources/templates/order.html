@@ -111,7 +111,6 @@
     <div class="side-boxes">
         <div class="basket-list-box">
             <h2>Oversigt</h2>
-
             <div class="basket-list">
                 <th:block th:each="order : ${basket}">
                     <div class="basket-list-product-box">
@@ -140,6 +139,7 @@
                     </div>
                     <a class="basket-info" th:text="${order.getInfoFirst}"></a>
                     <a class="basket-info" th:text="${order.getInfoSecond}"></a>
+                    <a class="basket-info" th:text="${order.getInfoThird}"></a>
                 </th:block>
             </div>
 
