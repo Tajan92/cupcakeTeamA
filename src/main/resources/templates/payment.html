@@ -1,20 +1,19 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-
-<head th:fragment="head(title)">
+<html lang="en">
+<head>
     <meta charset="UTF-8">
-    <title th:text="${title}"></title>
+    <title>Title</title>
     <link rel="stylesheet" href="/public/css/variables.css" th:href="@{/css/variables.css}"/>
     <link rel="stylesheet" href="/public/css/generalBody.css" th:href="@{/css/generalBody.css}"/>
     <link rel="stylesheet" href="/public/css/burgerMenu.css" th:href="@{/css/burgerMenu.css}"/>
     <link rel="stylesheet" href="/public/css/header.css" th:href="@{/css/header.css}"/>
     <link rel="stylesheet" href="/public/css/frontpage.css" th:href="@{/css/frontpage.css}"/>
-    <link rel="stylesheet" href="/public/css/order.css" th:href="@{/css/order.css}"/>
     <link rel="stylesheet" href="/public/css/payment.css" th:href="@{/css/payment.css}"/>
-    <link rel="stylesheet" href="/public/css/admin.css" th:href="@{/css/admin.css}"/>
+    <link rel="stylesheet" href="/public/css/order.css" th:href="@{/css/order.css}"/>
 </head>
 
-<header th:fragment="header">
+<body>
+<header>
     <a class="logo" href="frontpage.html" th:href="@{/frontpage}">Olsker Cupcakes</a>
 
     <svg class="burger-menu-picture" xmlns="http://www.w3.org/2000/svg" width="51" height="51" viewBox="0 0 51 51"
@@ -24,7 +23,6 @@
     </svg>
 
     <div class="web-menu">
-        <a id="admin" href="admin.html" th:href="@{/renderAdminPage}">Admin</a>
         <a id="forside" href="frontpage.html" th:href="@{/frontpage}">Forside</a>
         <a id="bestil" href="order.html" th:href="@{/order}">Bestil</a>
         <a id="mine-ordre" href="my-orders.html" th:href="@{/myOrders}">Mine Ordre</a>
@@ -42,13 +40,73 @@
 </header>
 
 
-<footer th:fragment="footer">
+<div class="payment-box">
+<p id="your-order-title">Din Bestilling</p>
+    <div class="payment-basket-list">
+        <th:block th:each="order : ${basket}">
+            <div class="basket-list-product-box">
+                <div class="first-line-styling">
+                    <a class="name-price">1x | Berry dream</a>
+                    <a class="name-price">45kr</a>
+                </div>
+                <a class="ingredients">Chocolate + blueberry</a>
+                <a></a>
+            </div>
+            <div class="basket-list-product-box">
+                <div class="first-line-styling">
+                    <a class="name-price">2x | Marzipan Meadow</a>
+                    <a class="name-price">90kr</a>
+                </div>
+                <a class="ingredients">Chocolate + blueberry</a>
+                <a></a>
+            </div>
+            <div class="basket-list-product-box">
+                <div class="first-line-styling">
+                    <a class="name-price">2x | Marzipan Meadow</a>
+                    <a class="name-price">90kr</a>
+                </div>
+                <a class="ingredients">Chocolate + blueberry</a>
+                <a></a>
+            </div>
+            <div class="basket-list-product-box">
+                <div class="first-line-styling">
+                    <a class="name-price">2x | Marzipan Meadow</a>
+                    <a class="name-price">90kr</a>
+                </div>
+                <a class="ingredients">Chocolate + blueberry</a>
+                <a></a>
+            </div>
+            <div class="basket-list-product-box">
+                <div class="first-line-styling">
+                    <a class="name-price">2x | Marzipan Meadow</a>
+                    <a class="name-price">90kr</a>
+                </div>
+                <a class="ingredients">Chocolate + blueberry</a>
+                <a></a>
+            </div>
+            <div class="basket-list-product-box">
+                <div class="first-line-styling">
+                    <a class="name-price">2x | Marzipan Meadow</a>
+                    <a class="name-price">90kr</a>
+                </div>
+                <a class="ingredients">Chocolate + blueberry</a>
+                <a></a>
+            </div>
+            <a class="basket-info" th:text="${order.getInfoFirst}"></a>
+            <a class="basket-info" th:text="${order.getInfoSecond}"></a>
+            <a class="basket-info" th:text="${order.getInfoThird}"></a>
+        </th:block>
+        
+    </div>
+    <hr>
+    <a id="total-payment" class="name-price">Total: 315kr</a>
+    <div class="pay-button-box">
+    <a id="pay-button">Betal</a>
+    </div>
+</div>
+
+<footer>
     <p>din@mail.dk</p>
 </footer>
-
-
-
-<body>
-
 </body>
 </html>

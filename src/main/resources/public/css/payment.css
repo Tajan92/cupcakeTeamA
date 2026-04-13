@@ -1,0 +1,78 @@
+#your-order-title {
+    text-align: center;
+    font-size: 3rem;
+    margin-top: 2rem;
+    font-family: var(--header-font), serif;
+    font-weight: 600;
+    color: black;
+    font-style: normal;
+    line-height: normal;
+}
+
+.payment-box {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    margin-top: 2rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-bottom: auto;
+    width: 85%;
+    height: 80vh;
+    border-radius: 1.63rem;
+    border: 3px solid #E8D8E8;
+    font-family: var(--body-font), serif;
+    background: #FFF;
+}
+
+.pay-button-box {
+    gap: 1rem;
+    display: flex;
+    align-self: center;
+    justify-self: center;
+    margin-top: auto;
+    margin-bottom: 2rem;
+    background-color: var(--vanilla-white-color);
+    border-radius: var(--button-border);
+    width: 20rem;
+}
+
+#pay-button {
+    display: flex;            
+    align-items: center;      
+    justify-content: center;
+    font-size: 3rem;
+    color: var(--main-button-color);
+    height: 6.2rem;
+    border: none;
+    text-decoration: none;
+    width: 100%;
+}
+.payment-basket-list {
+    max-height: 80%;
+    overflow: auto;
+}
+#total-payment {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    margin-right: 1rem;
+}
+@media (min-width: 1024px) {
+    .payment-box {
+        height: 60vh;
+    }
+    .pay-button-box {
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+        width: 10rem;
+    }
+    #pay-button {
+        font-size: 2rem;
+        height: 3.5rem;
+    }
+    #your-order-title {
+        font-size: 2rem;
+        margin-top: 1rem;
+    }
+}

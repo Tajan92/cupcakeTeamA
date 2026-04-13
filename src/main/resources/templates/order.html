@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/public/css/header.css" th:href="@{/css/header.css}"/>
     <link rel="stylesheet" href="/public/css/frontpage.css" th:href="@{/css/frontpage.css}"/>
     <link rel="stylesheet" href="/public/css/order.css" th:href="@{/css/order.css}"/>
+    <link rel="stylesheet" href="/public/css/payment.css" th:href="@{/css/payment.css}"/>
 </head>
 
 <body>
@@ -112,7 +113,7 @@
         <div class="basket-list-box">
             <h2>Oversigt</h2>
             <div class="basket-list">
-                <th:block th:each="order : ${basket}">
+                <th:block class="basket-load-web" th:each="order : ${basket}">
                     <div class="basket-list-product-box">
                         <div class="first-line-styling">
                             <a class="name-price">1x | Berry dream</a>
@@ -137,6 +138,38 @@
                         <a class="ingredients">Chocolate + blueberry</a>
                         <a></a>
                     </div>
+                    <div class="basket-list-product-box">
+                        <div class="first-line-styling">
+                            <a class="name-price">2x | Marzipan Meadow</a>
+                            <a class="name-price">90kr</a>
+                        </div>
+                        <a class="ingredients">Chocolate + blueberry</a>
+                        <a></a>
+                    </div>
+                    <div class="basket-list-product-box">
+                        <div class="first-line-styling">
+                            <a class="name-price">2x | Marzipan Meadow</a>
+                            <a class="name-price">90kr</a>
+                        </div>
+                        <a class="ingredients">Chocolate + blueberry</a>
+                        <a></a>
+                    </div>
+                    <div class="basket-list-product-box">
+                        <div class="first-line-styling">
+                            <a class="name-price">2x | Marzipan Meadow</a>
+                            <a class="name-price">90kr</a>
+                        </div>
+                        <a class="ingredients">Chocolate + blueberry</a>
+                        <a></a>
+                    </div>
+                    <div class="basket-list-product-box">
+                        <div class="first-line-styling">
+                            <a class="name-price">2x | Marzipan Meadow</a>
+                            <a class="name-price">90kr</a>
+                        </div>
+                        <a class="ingredients">Chocolate + blueberry</a>
+                        <a></a>
+                    </div>
                     <a class="basket-info" th:text="${order.getInfoFirst}"></a>
                     <a class="basket-info" th:text="${order.getInfoSecond}"></a>
                     <a class="basket-info" th:text="${order.getInfoThird}"></a>
@@ -144,8 +177,9 @@
             </div>
 
         </div>
-        <div class="checkout-button-web">
-            <h3 class="checkout-button">Gå til betaling</h3>
+
+        <div class="pay-button-box">
+            <a id="pay-button">Bestil</a>
         </div>
     </div>
     <div class="cupcake-arrow-right">
@@ -161,10 +195,6 @@
         </svg>
     </div>
 </div>
-<div class="cupcake-combo">
-    <h1 id="cupcake-combo">Chocolate + nutmeg</h1>
-</div>
-
 
 <div class="basket-button-mobile">
     <h1 class="basket-button">Tilføj til kurv</h1>
@@ -173,7 +203,59 @@
 <h1 class="overview-mobile">Oversigt</h1>
 
 <div class="basket-box">
-
+    <th:block class="basket-load-mobile" th:each="order : ${basket}">
+        <div class="basket-list-product-box">
+            <div class="first-line-styling">
+                <a class="name-price">1x | Berry dream</a>
+                <a class="name-price">45kr</a>
+            </div>
+            <a class="ingredients">Chocolate + blueberry</a>
+            <a></a>
+        </div>
+        <div class="basket-list-product-box">
+            <div class="first-line-styling">
+                <a class="name-price">2x | Marzipan Meadow</a>
+                <a class="name-price">90kr</a>
+            </div>
+            <a class="ingredients">Chocolate + blueberry</a>
+            <a></a>
+        </div>
+        <div class="basket-list-product-box">
+            <div class="first-line-styling">
+                <a class="name-price">2x | Frangipane Fizz</a>
+                <a class="name-price">90kr</a>
+            </div>
+            <a class="ingredients">Chocolate + blueberry</a>
+            <a></a>
+        </div>
+        <div class="basket-list-product-box">
+            <div class="first-line-styling">
+                <a class="name-price">2x | Marzipan Meadow</a>
+                <a class="name-price">90kr</a>
+            </div>
+            <a class="ingredients">Chocolate + blueberry</a>
+            <a></a>
+        </div>
+        <div class="basket-list-product-box">
+            <div class="first-line-styling">
+                <a class="name-price">2x | Marzipan Meadow</a>
+                <a class="name-price">90kr</a>
+            </div>
+            <a class="ingredients">Chocolate + blueberry</a>
+            <a></a>
+        </div>
+        <div class="basket-list-product-box">
+            <div class="first-line-styling">
+                <a class="name-price">2x | Marzipan Meadow</a>
+                <a class="name-price">90kr</a>
+            </div>
+            <a class="ingredients">Chocolate + blueberry</a>
+            <a></a>
+        </div>
+        <a class="basket-info" th:text="${order.getInfoFirst}"></a>
+        <a class="basket-info" th:text="${order.getInfoSecond}"></a>
+        <a class="basket-info" th:text="${order.getInfoThird}"></a>
+    </th:block>
 
 </div>
 
