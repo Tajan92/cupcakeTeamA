@@ -20,11 +20,17 @@ public class AdminPageController {
 
 
     public static void renderAdminPage(Context ctx, ConnectionPool connectionPool) throws DatabaseException {
+        User user = ctx.sessionAttribute("currentUser");
         List<User> allUsers = UserMapper.getUserInfo(connectionPool);
         ctx.attribute("allUsers", allUsers);
 
         ArrayList<Order> allOrders = OrderMapper.getAllOrders(connectionPool);
         ctx.attribute("allOrders", allOrders);
-        ctx.render("admin.html");
+
+        if (user.getRole().matches("admin")){
+            ctx.render("admin.html");
+        }else{
+            ctx.redirect("/frontpage");
+        }
     }
 }

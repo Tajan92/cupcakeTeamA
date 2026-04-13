@@ -19,12 +19,16 @@ public class OrderController {
     public static void deleteOrder(Context ctx, ConnectionPool connectionPool) throws DatabaseException {
         String orderId = ctx.formParam("orderId");
         User user = ctx.sessionAttribute("currentUser");
-
+        assert orderId != null;
+        int integerId = Integer.parseInt(orderId);
         if (user != null && user.getRole().matches("admin")) {
 
-            OrderMapper.deleteOrder(orderId, connectionPool);
+            OrderMapper.deleteOrder(integerId, connectionPool);
 
         }
-        ctx.redirect("/adminPage");
+        assert user != null;
+            ctx.redirect("/renderAdminPage");
+
+
     }
 }
