@@ -1,0 +1,26 @@
+
+#about-us-title{
+    color: black;
+}
+
+#about-us-box{
+    max-width: 50vw;
+    max-height: 70vh;
+    justify-self: center;
+}
+
+.about-us-text{
+    margin-block-start: 0.2em;
+    margin-block-end: 0.2em;
+    font-size: 3rem;
+    text-align: center;
+}
+
+@media (max-width: 1024px) {
+    #about-us-box{
+        max-width: 70vw;
+    }
+    #about-us-title{
+        margin-top: 10vh;
+    }
+}

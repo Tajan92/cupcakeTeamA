@@ -1,10 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<div th:replace="~{fragments :: head(Forside)}"></div>
+
+
 <body>
 
+<div th:replace="~{fragments :: header}"></div>
+
+<main>
+
+<h1 id="about-us-title">Om os</h1>
+    <div id="about-us-box">
+        <p class="about-us-text">Velkommen til Olsker Cupcakes.</p>
+<p class="about-us-text">
+    Vi brænder for at lave lækre, håndlavede cupcakes med kvalitetsingredienser og et strejf af kreativitet i hver bid.</p>
+    <p class="about-us-text">Inspireret af ø-livets hyggelige charme kombinerer vores bageri traditionel bagning med moderne smagsvarianter for at skabe lækkerier,
+    der bringer glæde til enhver lejlighed.</p>
+    <p class="about-us-text">Uanset om du fejrer noget særligt eller bare har lyst til noget lækkert,
+    er vi her for at gøre din dag lidt mere spiselig.</p>
+    </div>
+
+</main>
+
+
+<div th:replace="~{fragments :: footer}"></div>
+
+<script src="/public/js/burgerMenu.js"></script>
 </body>
+
+
 </html>
