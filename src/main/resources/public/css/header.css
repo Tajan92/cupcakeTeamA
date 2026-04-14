@@ -21,6 +21,10 @@ header{
     color: black;
 }
 
+.menu{
+    font-size: var(--Logo-web);
+}
+
 .web-menu  {
     font-size: clamp(1.2rem, 1.8vw, 2rem);
     font-family: var(--header-font), serif;
