@@ -36,7 +36,7 @@ footer {
 @media(min-width: 1024px) {
     footer{
         display: flex;
-        height: 7vh;
+        height: 1.5vh;
         font-size: 1.7rem;
         margin-top: 0;
     }
