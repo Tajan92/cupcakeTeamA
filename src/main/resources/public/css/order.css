@@ -88,7 +88,7 @@ h1 {
 }
 
 .checkout-button-mobile {
-    margin-top: 2rem;
+    margin-top: auto;
     margin-bottom: 2rem;
     display: flex;
     align-self: center;
@@ -112,21 +112,60 @@ h1 {
     margin-left: 2%;
     margin-right: 2%;
     width: 85%;
-    height: 25rem;
+    height: 37rem;
     border-radius: 1.63rem;
     border: 1.63px solid #E8D8E8;
     font-family: var(--body-font), serif;
     background: #FFF;
+    overflow: auto;
 }
 
-h2, h3, .basket-button-web, .checkout-button-web {
+
+.first-line-styling {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 0.5rem;
+}
+
+.name-price {
+    color: var(--menu-text-color);
+    font-family: "DM Sans", serif;
+    font-size: 1.625rem;
+    font-style: normal;
+    font-weight: 530;
+    line-height: normal;
+}
+
+.ingredients {
+    margin-left: 3.7rem;
+    color: #C97BB2;
+    font-family: "DM Sans", serif;
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.basket-list {
+    max-height: 18rem;
+    overflow: auto;
+}
+
+h2, h3, .basket-button-web, .checkout-button-web, .basket-load-web, .flavours,
+.pay-button-box, #order-pay-button, .side-boxes, #total-payment-web {
     display: none;
 }
 
 @media (min-width: 1024px) {
     .cupcake-arrow-left, .basket-button-mobile, .cupcake-arrow-right, .cupcake-combo,
-    .checkout-button-mobile, .basket-box, .overview-mobile {
+    .checkout-button-mobile, .basket-box, .overview-mobile, .basket-load-mobile, #total-payment-mobile {
         display: none;
+    }
+
+    .basket-load-web {
+        display: flow;
     }
 
     h1 {
@@ -195,7 +234,7 @@ h2, h3, .basket-button-web, .checkout-button-web {
         justify-content: space-between;
     }
 
-    .cupcake-custom-top, .cupcake-custom-bottom, .basket-list-box {
+    .cupcake-custom-top, .cupcake-custom-bottom {
         align-self: center;
         margin-top: 1rem;
         margin-left: 2%;
@@ -230,14 +269,6 @@ h2, h3, .basket-button-web, .checkout-button-web {
         min-height: 70%;
     }
 
-    .basket-list {
-        display: flex;
-        flex-direction: column;
-        font-size: 1.2rem;
-        font-style: normal;
-        font-weight: 530;
-        line-height: normal;
-    }
 
     .basket-info {
         margin-top: 0.4rem;
@@ -256,31 +287,6 @@ h2, h3, .basket-button-web, .checkout-button-web {
         border-radius: 22.8rem;
     }
 
-    .first-line-styling {
-        display: flex;
-        justify-content: space-between;
-        margin-left: 1rem;
-        margin-right: 1rem;
-        margin-top: 0.5rem;
-    }
-    .name-price {
-        color: var(--menu-text-color);
-        font-family: "DM Sans", serif;
-        font-size: 1.625rem;
-        font-style: normal;
-        font-weight: 530;
-        line-height: normal;
-    }
-    
-    .ingredients {
-        margin-left: 3.7rem;
-        color: #C97BB2;
-        font-family: "DM Sans", serif;
-        font-size: 1.4rem;
-        font-style: normal;
-        font-weight: 500;
-        line-height: normal;
-    }
 
     .flavours-box {
         margin: 0.2rem;
@@ -304,5 +310,46 @@ h2, h3, .basket-button-web, .checkout-button-web {
         font-style: normal;
         font-weight: 530;
         line-height: normal;
+    }
+
+    #order-pay-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        color: var(--main-button-color);
+        height: 3.5rem;
+        border: none;
+        text-decoration: none;
+        width: 100%;
+    }
+
+    #total-payment-web {
+        display: flex;
+        align-items: center;
+        justify-content: right;
+        margin-right: 1rem;
+    }
+}
+
+@media (max-width: 1024px) {
+    .name-price {
+        font-size: 3rem;
+        margin-top: 0.5rem;
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+    }
+
+    #total-payment-mobile {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 2%;
+        margin-right: 2%;
+        width: 85%;
+    }
+
+    .ingredients {
+        font-size: 2.7rem;
     }
 }

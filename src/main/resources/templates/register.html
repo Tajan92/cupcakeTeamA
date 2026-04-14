@@ -3,47 +3,36 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Sub Stats - Login</title>
-    <link rel="stylesheet" href="/public/css/" th:href="@{/css/generalBody.css}"/>
+    <title>Register</title>
+    <link rel="stylesheet" href="/public/css/variables.css" th:href="@{/css/variables.css}"/>
+    <link rel="stylesheet" href="/public/css/generalBody.css" th:href="@{/css/generalBody.css}"/>
+    <link rel="stylesheet" href="/public/css/login.css" th:href="@{/css/login.css}"/>
 </head>
 
 <body>
-<header>
 
-</header>
-
+<h1 class="logo">Olsker Cupcakes</h1>
 
 <div class="box-login">
-    <h1 id="welcome-message">Velkommen til SubStats</h1>
-
-    <div id="menu-box-login">
-        <hr class="divider">
-        <a class="button-box" style="grid-area: login" th:href="@{/login}">Log Ind</a>
-        <button id="register" class="button-box" style="grid-area: register">Opret bruger</button>
-    </div>
-    <form id="register-form-create" action="/register" method="post">
+    <h1 class="welcome-message">Opret Bruger</h1>
 
 
-        <p class="text" style="grid-area: email-text">EMAIL</p>
-        <input class="input-box" type="text" name="email" style="grid-area: email" placeholder="fx. din@mail.dk">
+    <form id="register-form" action="/login" method="post">
+        <p class="input-description">EMAIL</p>
+        <input class="input-box" type="text" name="email" placeholder="eg. User1234..">
+        <p class="input-description" >PASSWORD</p>
+        <input class="input-box" type="password" name="password"  placeholder=" •••••••••••">
+        <p class="input-description" >GENTAG PASSWORD</p>
+        <input class="input-box" type="password" name="password"  placeholder=" •••••••••••">
 
-        <input class="input-box" type="password" name="password" style="grid-area: password" placeholder=" •••••••••••">
-
-        <input class="input-box" type="password" name="password-check" style="grid-area: password-check" placeholder=" •••••••••••">
-
-        <p style="grid-area: password-text">ADGANGSKODE</p>
-        <hr class="divider" style="grid-area: hr">
-        <p style="grid-area: password-reenter">SKRIV ADGANGSKODE IGEN</p>
-        <p id="error-message" style="grid-area: p" th:text="${errorMessage}"></p>
-        <button type="submit" id="create-button" style="grid-area: create-button" class="login-box">Opret Bruger</button>
+        <button class="login-button" type="submit">Opret</button>
     </form>
 
-
-
+    <div class="opret">
+        <p>Har du allerede en bruger?</p>
+        <a th:href="@{/login}" class="button-box" id="register-button" >Log in her</a>
+    </div>
 
 </div>
-
-
 </body>
-
 </html>

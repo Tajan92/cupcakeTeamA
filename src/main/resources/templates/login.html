@@ -6,29 +6,30 @@
     <title>Login</title>
     <link rel="stylesheet" href="/public/css/variables.css" th:href="@{/css/variables.css}"/>
     <link rel="stylesheet" href="/public/css/generalBody.css" th:href="@{/css/generalBody.css}"/>
+    <link rel="stylesheet" href="/public/css/login.css" th:href="@{/css/login.css}"/>
 </head>
 
 <body>
 
+<h1 class="logo">Olsker Cupcakes</h1>
+
 <div class="box-login">
-    <h1 id="welcome-message">Welcome to CupCake</h1>
-
-    <div id="menu-box-login">
-        <hr class="divider">
-        <button id="login" class="button-box" style="grid-area: login">Log In</button>
-        <a th:href="@{/register}" class="button-box" style="grid-area: register">Create User</a>
+    <h1 class="welcome-message">Login</h1>
 
 
-    </div>
-    <form id="register-form-login" action="/login" method="post">
-        <p class="text" style="grid-area: username-text">EMAIL</p>
-        <input class="input-box" type="text" name="email" style="grid-area: email" placeholder="eg. User1234..">
-        <input class="input-box" type="password" name="password" style="grid-area: password" placeholder=" •••••••••••">
-        <p style="grid-area: password-text">PASSWORD</p>
-        <hr class="divider">
-        <button type="submit" style="grid-area: login-button" class="login-box">Log In</button>
+    <form id="login-form" action="/login" method="post">
+        <p class="input-description">EMAIL</p>
+        <input class="input-box" type="text" name="email" placeholder="eg. User1234..">
+        <p class="input-description">PASSWORD</p>
+        <input class="input-box" type="password" name="password"  placeholder=" •••••••••••">
+
+        <button class="login-button" type="submit">Log In</button>
     </form>
 
+    <div class="opret">
+        <p>Har du ikke en bruger?</p>
+        <a th:href="@{/register}" class="button-box" type="button" id="register-button" >Opret dig her</a>
+    </div>
 
 </div>
 </body>
