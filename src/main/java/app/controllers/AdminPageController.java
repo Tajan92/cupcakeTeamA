@@ -53,8 +53,6 @@ public class AdminPageController {
 
         UserMapper.addBalance(userId, currentBalance, connectionPool);
         renderAdminPage(ctx, connectionPool);
-
-
     }
 
 

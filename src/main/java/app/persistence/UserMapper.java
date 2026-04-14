@@ -116,10 +116,15 @@ public class UserMapper
         try (Connection connection = connectionPool.getConnection();
             PreparedStatement ps = connection.prepareStatement(sql))
         {
+            ps.setInt(1, userId);
             ResultSet rs = ps.executeQuery();
-            rs.getDouble("balance");
+
+            while (rs.next()) {
+                balance = rs.getDouble("balance");
+            }
             return balance;
         }
+
         catch (SQLException e) {
             throw new DatabaseException("Error altering balance", e.getMessage());
         }
