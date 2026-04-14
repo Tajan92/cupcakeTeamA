@@ -78,11 +78,51 @@ public class UserMapper
             while (rs.next()) {
                 int userId = rs.getInt("user_id");
                 String email = rs.getString("email");
-                users.add(new User(userId, email));
+                double balance = rs.getDouble("balance");
+                users.add(new User(userId, email, balance));
             }
             return users;
         } catch (SQLException e) {
             throw new DatabaseException("A problem occurred trying to get all users: ", e.getMessage());
         }
     }
+
+    public static void addBalance(int userid, double balance, ConnectionPool connectionPool) throws DatabaseException {
+
+        String sql = "UPDATE users SET balance = ? WHERE user_id = ?;";
+
+        try (Connection connection = connectionPool.getConnection();
+             PreparedStatement ps = connection.prepareStatement(sql))
+        {
+            ps.setDouble(1, balance);
+            ps.setInt(2, userid);
+
+            int rowsAffected = ps.executeUpdate();
+            if (rowsAffected != 1){
+                throw new DatabaseException("Could not alter balance");
+            }
+        } catch (SQLException | DatabaseException e) {
+            throw new DatabaseException("Error altering balance", e.getMessage());
+        }
+
+
+    }
+
+    public static double getCurrentBalance(int userId, ConnectionPool connectionPool) throws DatabaseException{
+
+        double balance = 0;
+        String sql = "SELECT balance FROM users WHERE user_id = ? ";
+
+        try (Connection connection = connectionPool.getConnection();
+            PreparedStatement ps = connection.prepareStatement(sql))
+        {
+            ResultSet rs = ps.executeQuery();
+            rs.getDouble("balance");
+            return balance;
+        }
+        catch (SQLException e) {
+            throw new DatabaseException("Error altering balance", e.getMessage());
+        }
+    }
+
 }

@@ -19,8 +19,9 @@ public class User {
         this.role = role;
     }
 
-    public User(int id, String email){
+    public User(int id, String email, Double balance){
         this.id = id;
         this.email = email;
+        this.balance = balance;
     }
 }

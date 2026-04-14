@@ -14,8 +14,10 @@ import java.util.List;
 
 public class AdminPageController {
 
-    public static void addRoutes(Javalin app, ConnectionPool connectionPool){
+    public static void addRoutes(Javalin app, ConnectionPool connectionPool) {
         app.get("/renderAdminPage", ctx -> renderAdminPage(ctx, connectionPool));
+        app.post("/addBalance", ctx -> addBalance(ctx, connectionPool));
+
     }
 
 
@@ -27,10 +29,33 @@ public class AdminPageController {
         ArrayList<Order> allOrders = OrderMapper.getAllOrders(connectionPool);
         ctx.attribute("allOrders", allOrders);
 
-        if (user.getRole().matches("admin")){
+        if (user.getRole().matches("admin")) {
             ctx.render("admin.html");
-        }else{
+        } else {
             ctx.redirect("/frontpage");
         }
     }
+
+    public static void addBalance(Context ctx, ConnectionPool connectionPool) throws DatabaseException {
+
+        String userIdValue = ctx.formParam("hiddenUserId");
+        assert userIdValue != null;
+        int userId = Integer.parseInt(userIdValue);
+
+        double currentBalance = UserMapper.getCurrentBalance(userId, connectionPool);
+
+        String balanceValue = ctx.formParam("adminAddLabel");
+        assert balanceValue != null;
+        double balanceInput = Double.parseDouble(balanceValue);
+
+        currentBalance += balanceInput;
+
+
+        UserMapper.addBalance(userId, currentBalance, connectionPool);
+        renderAdminPage(ctx, connectionPool);
+
+
+    }
+
+
 }
