@@ -2,9 +2,65 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Admin</title>
+    <link rel="stylesheet" href="/public/css/variables.css" th:href="@{/css/variables.css}"/>
+    <link rel="stylesheet" href="/public/css/generalBody.css" th:href="@{/css/generalBody.css}"/>
+    <link rel="stylesheet" href="/public/css/burgerMenu.css" th:href="@{/css/burgerMenu.css}"/>
+    <link rel="stylesheet" href="/public/css/header.css" th:href="@{/css/header.css}"/>
+    <link rel="stylesheet" href="/public/css/frontpage.css" th:href="@{/css/frontpage.css}"/>
+    <link rel="stylesheet" href="/public/css/admin.css" th:href="@{/css/admin.css}"/>
+    <link rel="stylesheet" href="/public/css/myOrders.css" th:href="@{/css/myOrders.css}"/>
+
 </head>
+
 <body>
+<header>
+    <a class="logo" href="frontpage.html" th:href="@{/frontpage}">Olsker Cupcakes</a>
+
+    <svg class="burger-menu-picture" xmlns="http://www.w3.org/2000/svg" width="51" height="51" viewBox="0 0 51 51"
+         fill="none">
+        <path d="M8.50001 38.25C7.89792 38.25 7.39359 38.046 6.98701 37.638C6.58042 37.23 6.37642 36.7257 6.37501 36.125C6.37359 35.5243 6.57759 35.02 6.98701 34.612C7.39642 34.204 7.90076 34 8.50001 34H42.5C43.1021 34 43.6071 34.204 44.0151 34.612C44.4231 35.02 44.6264 35.5243 44.625 36.125C44.6236 36.7257 44.4196 37.2307 44.013 37.6401C43.6064 38.0495 43.1021 38.2528 42.5 38.25H8.50001ZM8.50001 27.625C7.89792 27.625 7.39359 27.421 6.98701 27.013C6.58042 26.605 6.37642 26.1007 6.37501 25.5C6.37359 24.8993 6.57759 24.395 6.98701 23.987C7.39642 23.579 7.90076 23.375 8.50001 23.375H42.5C43.1021 23.375 43.6071 23.579 44.0151 23.987C44.4231 24.395 44.6264 24.8993 44.625 25.5C44.6236 26.1007 44.4196 26.6057 44.013 27.0151C43.6064 27.4245 43.1021 27.6278 42.5 27.625H8.50001ZM8.50001 17C7.89792 17 7.39359 16.796 6.98701 16.388C6.58042 15.98 6.37642 15.4757 6.37501 14.875C6.37359 14.2743 6.57759 13.77 6.98701 13.362C7.39642 12.954 7.90076 12.75 8.50001 12.75H42.5C43.1021 12.75 43.6071 12.954 44.0151 13.362C44.4231 13.77 44.6264 14.2743 44.625 14.875C44.6236 15.4757 44.4196 15.9807 44.013 16.3901C43.6064 16.7995 43.1021 17.0028 42.5 17H8.50001Z"
+              fill="#C97BB2"/>
+    </svg>
+
+    <div class="web-menu">
+        <a id="forside" href="frontpage.html" th:href="@{/frontpage}">Forside</a>
+        <a id="bestil" href="order.html" th:href="@{/order}">Bestil</a>
+        <a id="mine-ordre" href="my-orders.html" th:href="@{/myOrders}">Mine Ordre</a>
+        <a id="om-os" href="about.html" th:href="@{/about}">Om os</a>
+        <a id="log-ud" href="login.html" th:href="@{/logout}">Log ud</a>
+    </div>
+
+    <div class="burger-menu">
+        <a id="burger-menu-top" href="frontpage.html" th:href="@{/frontpage}">Forside</a>
+        <a href="order.html" th:href="@{/order}">Bestil</a>
+        <a href="my-orders.html" th:href="@{/myOrders}">Mine ordre</a>
+        <a href="about.html" th:href="@{/about}">Om os</a>
+        <a id="burger-menu-bottom" href="login.html" th:href="@{/logout}">Log ud</a>
+    </div>
+</header>
+
+<main class="order-overview">
+    <div class="white-box">
+
+            <div class="my-orders-panel">
+                <div class="panel-header" th:text="${selectedUser != null ? selectedUser.email + 's Orders' : 'Alle ordrer'}">
+                    Mine ordrer
+                </div>
+                <div class="order-item">
+                    <th:block th:each="order : ${allOrders}">
+                        <div class="order-form">
+                            <span th:text="'Order ID: #' + ${order.orderId} + ' User ID: #' + ${order.userId} + ' Cupcake Ids: #' + ${order.cupcakeIds}">
+                                #1753
+                            </span>
+                        </div>
+                    </th:block>
+                </div>
+            </div>
+    </div>
+</main>
+
+
 
 </body>
 </html>
