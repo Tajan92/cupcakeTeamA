@@ -25,6 +25,12 @@
     width: 100%;
 }
 
+.customer-sidebar{
+    display: flex;
+    flex-direction: column;
+    max-height: 700px;
+}
+
 
 .list-header, .panel-header {
     background-color: #D18BB8;
@@ -41,6 +47,7 @@
     display: flex;
     gap: 10px;
     margin-bottom: 15px;
+
 }
 
 .money-button {
@@ -58,7 +65,6 @@
 .customer-label {
     background-color: #D18BB8;
     color: white;
-    flex-grow: 1;
     display: flex;
     align-items: center;
     padding-left: 20px;
@@ -66,14 +72,22 @@
     font-size: 1.4rem;
 }
 
-/* Right Panel */
 .order-details-panel {
     background-color: #D18BB8;
     border-radius: 15px;
     padding-left: 20px;
     padding-bottom: 20px;
     padding-right: 20px;
-    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    max-height: 700px;
+}
+
+.customer-item{
+    overflow-y: auto;
+    overflow-x: hidden;
+    flex: 1;
+    min-height: 0;
 }
 
 .order-item {
@@ -82,8 +96,12 @@
     padding: 15px;
     border-radius: 8px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    flex: 1;
+    min-height: 0;
 }
 
 .delete-btn {

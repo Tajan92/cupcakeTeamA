@@ -16,15 +16,20 @@ public class OrderMapper {
 
 
 
-    public static void deleteOrder(String orderId, ConnectionPool connectionPool) throws DatabaseException {
-        String sql = "DELETE FROM cupcake_db WHERE order_id = ?";
+    public static void deleteOrder(int orderId, ConnectionPool connectionPool) throws DatabaseException {
+        String sql = "DELETE FROM orders WHERE order_id = ?";
+        String sql2 = "DELETE FROM order_items WHERE order_id = ?";
 
         try (Connection connection = connectionPool.getConnection();
-             PreparedStatement ps = connection.prepareStatement(sql);) {
-            ps.setString(1, orderId);
+             PreparedStatement ps = connection.prepareStatement(sql);
+             PreparedStatement ps2 = connection.prepareStatement(sql2)) {
+            ps.setInt(1, orderId);
+            ps2.setInt(1, orderId);
 
+            //Vigtigt her at orderen bliver slettet fra order_items først, da order_id er en foreign key
+            int rowsAffected2 = ps2.executeUpdate();
             int rowsAffected = ps.executeUpdate();
-            if (rowsAffected != 1){
+            if (rowsAffected != 1 && rowsAffected2 != 1){
                 throw new DatabaseException("Could not find order");
             }
         } catch (SQLException e) {

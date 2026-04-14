@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/public/css/header.css" th:href="@{/css/header.css}"/>
     <link rel="stylesheet" href="/public/css/frontpage.css" th:href="@{/css/frontpage.css}"/>
     <link rel="stylesheet" href="/public/css/admin.css" th:href="@{/css/admin.css}"/>
+
 </head>
 
 <body>
@@ -44,11 +45,13 @@
 
             <div class="customer-sidebar">
                 <div class="list-header">Alle brugere</div>
+                <div class="customer-item">
                 <div th:each="user : ${allUsers}" class="customer-entry">
                     <button class="money-button">$</button>
                     <div class="customer-label" th:text="'#' + ${user.id} + ' ' + ${user.email}">
                         #123 Morten
                     </div>
+                </div>
                 </div>
             </div>
 
@@ -58,16 +61,21 @@
                 </div>
                 <div class="order-item">
                     <th:block th:each="order : ${allOrders}">
-                        <th:block th:each="order : ${allOrders}">
-                            <span th:text="' Order ID: #' + ${order.orderId} + ' User ID: #' + ${order.userId} + 'Cupcake Ids:#' + ${order.cupcakeIds}">
-                             #1753
+                        <div class="order-form">
+                            <span th:text="'Order ID: #' + ${order.orderId} + ' User ID: #' + ${order.userId} + ' Cupcake Ids: #' + ${order.cupcakeIds}">
+                                #1753
                             </span>
-                    <button class="delete-btn" th:onclick="|window.location.href='@{/removeOrder}'|">X</button>
+                            <form th:action="@{/removeOrder}" method="post">
+                                <input type="hidden" name="orderId" th:value="${order.orderId}"/>
+                                <button class="delete-btn" type="submit">X</button>
+                            </form>
+                        </div>
                     </th:block>
                 </div>
             </div>
-
-        </div> </div> </main>
+        </div>
+    </div>
+</main>
 
 
 
