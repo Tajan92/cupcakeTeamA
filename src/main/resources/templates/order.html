@@ -118,7 +118,7 @@
                     <div class="basket-list-product-box">
                         <div class="first-line-styling">
                             <a class="name-price" th:text="${b.getAmountAndName}"></a>
-                            <a class="name-price" th:text="${b.getPrice}"></a>
+                            <a class="name-price" th:text="${b.getPrice+' kr'}"></a>
                         </div>
                         <a class="ingredients" th:text="${b.getTopAndBottom}"></a>
                         <a></a>
@@ -128,9 +128,9 @@
 
         </div>
         <hr>
-        <a id="total-payment-web" class="name-price" th:text="${getTotalPrice}"></a>
+        <a id="total-payment-web" class="name-price" th:text="${getTotalPrice+' kr'}"></a>
         <div class="pay-button-box">
-            <a id="order-pay-button">Bestil</a>
+            <a id="order-pay-button" th:href="@{/payment}">Bestil</a>
         </div>
     </div>
     <div class="cupcake-arrow-right">
@@ -158,7 +158,7 @@
         <div class="basket-list-product-box">
             <div class="first-line-styling">
                 <a class="name-price" th:text="${order.getAmountAndName}"></a>
-                <a class="name-price" th:text="${order.getPrice}"></a>
+                <a class="name-price" th:text="${order.getPrice+' kr'}"></a>
             </div>
             <a class="ingredients" th:text="${order.getTopAndBottom}"></a>
             <a></a>
@@ -167,10 +167,10 @@
 
 </div>
 <div class="checkout-button-mobile">
-<a id="total-payment-mobile" class="name-price" th:text="${getTotalPrice}"></a>
+<a id="total-payment-mobile" class="name-price" th:text="${getTotalPrice+' kr'}"></a>
 </div>
 <div class="checkout-button-mobile">
-    <h1 class="checkout-button">Gå til betaling</h1>
+    <h1 class="checkout-button" th:href="@{/payment}">Gå til betaling</h1>
 </div>
 
 

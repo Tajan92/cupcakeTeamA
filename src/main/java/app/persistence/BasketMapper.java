@@ -33,7 +33,7 @@ public class BasketMapper {
                     double price = rs.getDouble("price") * quantity;
 
                     String amountAndName = (int)quantity + " x " + name;
-                    String topAndBottom = rs.getString("top") + " & " + rs.getString("bottom");
+                    String topAndBottom = rs.getString("top") + " with " + rs.getString("bottom");
 
                     myBasket.add(new Basket(amountAndName, price, topAndBottom));
                 }

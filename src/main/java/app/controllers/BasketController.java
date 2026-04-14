@@ -15,7 +15,7 @@ public class BasketController {
     public static void addRoutes(Javalin app, ConnectionPool connectionPool) {
     }
 
-    public static void listUserBasket(Context ctx, ConnectionPool connectionPool) throws DatabaseException {
+    public static void listUserBasketInOrder(Context ctx, ConnectionPool connectionPool) throws DatabaseException {
         User user = ctx.sessionAttribute("currentUser");
         if (user == null) {
             ctx.redirect("/login");
@@ -29,5 +29,20 @@ public class BasketController {
         ctx.attribute("getTotalPrice", getTotalPrice);
         ctx.attribute("basketList", basketList);
         ctx.render("order.html");
+    }
+    public static void listUserBasketInPayment(Context ctx, ConnectionPool connectionPool) throws DatabaseException {
+        User user = ctx.sessionAttribute("currentUser");
+        if (user == null) {
+            ctx.redirect("/login");
+            return;
+        }
+        List<Basket> basketList = BasketMapper.getBasket(user.getId(), connectionPool);
+        double getTotalPrice = 0;
+        for (Basket basket : basketList) {
+            getTotalPrice += basket.getPrice();
+        }
+        ctx.attribute("getTotalPrice", getTotalPrice);
+        ctx.attribute("basketList", basketList);
+        ctx.render("payment.html");
     }
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -47,7 +47,7 @@
             <div class="basket-list-product-box">
                 <div class="first-line-styling">
                     <a class="name-price" th:text="${order.getAmountAndName}"></a>
-                    <a class="name-price" th:text="${order.getPrice}"></a>
+                    <a class="name-price" th:text="${order.getPrice+' kr'}"></a>
                 </div>
                 <a class="ingredients" th:text="${order.getTopAndBottom}"></a>
                 <a></a>
@@ -55,7 +55,7 @@
         </th:block>
     </div>
     <hr>
-    <a id="total-payment" class="name-price" th:text="${getTotalPrice}"></a>
+    <a id="total-payment" class="name-price" th:text="${getTotalPrice+' kr'}"></a>
     <div class="pay-button-box">
     <a id="pay-button">Betal</a>
     </div>
