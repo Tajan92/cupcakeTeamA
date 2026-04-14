@@ -150,6 +150,97 @@
     }
 }
 
+/* Tablet */
+@media (min-width: 768px) {
+    #intro-title {
+        font-size: 4rem;
+        margin-top: 10%;
+    }
+
+    #intro-paragraph {
+        font-size: 3rem;
+    }
+
+    #order-button {
+        width: 30rem;
+        height: 7rem;
+        font-size: 2.5rem;
+    }
+
+    .cupcake-highlight-box {
+        width: 50%;
+        height: 38rem;
+    }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+
+    .logo{
+        font-size: var(--Logo-web);
+    }
+
+    #intro-title {
+        font-size: 2.875rem;;
+        margin-top: 2%;
+    }
+
+    #intro-paragraph {
+        font-size: 2rem;
+        margin-top: 1%;
+        margin-bottom: 3%;
+    }
+
+    #order-button {
+        width: 17.625rem;
+        height: 4.6875rem;
+    }
+
+    .cupcake-highlight-box {
+        width: 35%;
+        height: 42rem;
+    }
+
+    #arrow-left, #arrow-right {
+        width: 5rem;
+        height: 5rem;
+    }
+
+    .cupcake-highlight {
+        margin-top: 4%;
+        display: flex;
+        justify-content: left;
+    }
+
+    .cupcake-highlight-box {
+        margin-top: 2%;
+        margin-left: 2%;
+        margin-right: 2%;
+        width: 40%;
+        height: 31.98rem;
+        border-radius: 1.63rem;
+        border: 1.63px solid #E8D8E8;
+        font-family: var(--body-font), serif;
+        background: #FFF;
+    }
+
+    .burger-menu-picture{
+        display: none;
+    }
+
+    #arrow-left, #arrow-right {
+        display: none;
+    }
+    footer{
+        height: 1%;
+    }
+
+
+}
+
+
+
+
 @media (min-width: 1024px) {
     #intro-title {
         margin-top: 2%;
