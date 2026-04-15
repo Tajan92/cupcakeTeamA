@@ -149,7 +149,28 @@ form {
     font-weight: 500;
     line-height: normal;
 }
+#remove-from-basket{
+    border-radius: 0.92763rem;
+    border: 0.989px solid #E8D8E8;
+    background: #C97BB2;
+    color: white;
+    font-size: 1.2rem;
+    width: 1rem;
+    height: 1rem;
+    cursor: pointer;
 
+    display: flex;       
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    flex-shrink: 0;
+}
+.remove-and-price {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+}
 .basket-list {
     max-height: 18rem;
     overflow: auto;

@@ -43,10 +43,10 @@
 <div class="payment-box">
 <p id="your-order-title">Din Bestilling</p>
     <div class="payment-basket-list">
-        <th:block th:each="order : ${basketList}">
+        <th:block th:each="cupcake : ${basketList}">
             <div class="basket-list-product-box">
                 <div class="first-line-styling">
-                    <a class="name-price" th:text="${order.getAmountAndName}"></a>
+                    <a class="name-price" th:text="${cupcake.getAmountAndName}"></a>
                     <a class="name-price" th:text="${order.getPrice+' kr'}"></a>
                 </div>
                 <a class="ingredients" th:text="${order.getTopAndBottom}"></a>

@@ -161,14 +161,20 @@
         <div class="basket-list-box">
             <h2>Oversigt</h2>
             <div class="basket-list">
-                <th:block class="basket-load-web" th:each="b : ${basketList}">
+                <th:block class="basket-load-web" th:each="cupcake : ${basketList}">
                     <div class="basket-list-product-box">
+                        <div>
                         <div class="first-line-styling">
                             <a class="name-price" th:text="${b.getAmountAndName}"></a>
+                            <div class="remove-and-price">
                             <a class="name-price" th:text="${b.getPrice+' kr'}"></a>
+                            <a id="remove-from-basket" th:onclick="|window.location.href='@{/renderBasket}'|"
+                                    type="button">-
+                            </a>
+                            </div>
                         </div>
                         <a class="ingredients" th:text="${b.getTopAndBottom}"></a>
-                        <a></a>
+                        </div>
                     </div>
                 </th:block>
             </div>

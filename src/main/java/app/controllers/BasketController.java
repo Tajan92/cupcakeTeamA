@@ -10,18 +10,32 @@ import app.persistence.CupcakeMapper;
 import io.javalin.Javalin;
 import io.javalin.http.Context;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class BasketController {
 
     public static void addRoutes(Javalin app, ConnectionPool connectionPool) {
         app.post("/addToBasket", ctx -> makeCupcake(ctx, connectionPool));
         app.get("/order", ctx -> listUserBasketInOrder(ctx, connectionPool));
+        app.get("/renderBasket", ctx -> removeItemFromBasket(ctx, connectionPool));
     }
-public static void update (Context ctx, ConnectionPool connectionPool) throws DatabaseException {
+
+    public static void update(Context ctx, ConnectionPool connectionPool) throws DatabaseException {
         makeCupcake(ctx, connectionPool);
         listUserBasketInOrder(ctx, connectionPool);
-}
+    }
+
+    public static ArrayList<Cupcake> getAmountAndName(Basket basket) {
+        ArrayList<Cupcake> cupcakeInfo = new ArrayList<>();
+        for (Map.Entry<Cupcake, Integer> cupcake : basket.getCupcakes().entrySet()) {
+            Cupcake cupcake1 = new Cupcake(cupcake.getKey().getId(), cupcake.getKey().getName(), cupcake.getKey().getTop(), cupcake.getKey().getBottom(), cupcake.getKey().getPrice(), cupcake.getValue());
+            cupcakeInfo.add(cupcake1);
+        }
+        return cupcakeInfo;
+    }
+
 
     public static void makeCupcake(Context ctx, ConnectionPool connectionPool) throws DatabaseException {
         User user = ctx.sessionAttribute("currentUser");
@@ -32,10 +46,10 @@ public static void update (Context ctx, ConnectionPool connectionPool) throws Da
 
         String top = ctx.formParam("top");
         String bottom = ctx.formParam("bottom");
-        if (top == null){
+        if (top == null) {
             top = "Chocolate";
         }
-        if (bottom == null){
+        if (bottom == null) {
             bottom = "Vanilla";
         }
         Cupcake cupcake = CupcakeMapper.getCupcake(top, bottom, connectionPool);
@@ -55,16 +69,17 @@ public static void update (Context ctx, ConnectionPool connectionPool) throws Da
         }
 
         List<Cupcake> allCupcakes = CupcakeMapper.getAllCupcakes(connectionPool);
-        List<Basket> basketList = BasketMapper.getBasket(user.getId(), connectionPool);
-        double getTotalPrice = 0;
+        List<Cupcake> cupcakeList = getAmountAndName(BasketMapper.getBasket(user.getId(), connectionPool));
 
-        for (Basket basket : basketList) {
-            getTotalPrice += basket.getPrice();
+        double totalPrice = 0;
+        for (Map.Entry<Cupcake, Integer> cupcake : BasketMapper.getBasket(user.getId(), connectionPool).getCupcakes().entrySet()) {
+            totalPrice += cupcake.getKey().getPrice();
         }
 
+
         ctx.attribute("allCupcakes", allCupcakes);
-        ctx.attribute("basketList", basketList);
-        ctx.attribute("getTotalPrice", getTotalPrice);
+        ctx.attribute("basketList", cupcakeList);
+        ctx.attribute("getTotalPrice", totalPrice);
 
         ctx.render("order.html");
     }
@@ -75,7 +90,38 @@ public static void update (Context ctx, ConnectionPool connectionPool) throws Da
             ctx.redirect("/login");
             return;
         }
-        List<Basket> basketList = BasketMapper.getBasket(user.getId(), connectionPool);
+
+        List<Cupcake> allCupcakes = CupcakeMapper.getAllCupcakes(connectionPool);
+        List<Cupcake> cupcakeList = getAmountAndName(BasketMapper.getBasket(user.getId(), connectionPool));
+
+        double totalPrice = 0;
+        for (Map.Entry<Cupcake, Integer> cupcake : BasketMapper.getBasket(user.getId(), connectionPool).getCupcakes().entrySet()) {
+            totalPrice += cupcake.getKey().getPrice();
+        }
+
+
+        ctx.attribute("allCupcakes", allCupcakes);
+        ctx.attribute("basketList", cupcakeList);
+        ctx.attribute("getTotalPrice", totalPrice);
+        ctx.render("payment.html");
+    }
+
+    public static void removeItemFromBasket(Context ctx, ConnectionPool connectionPool) throws DatabaseException {
+        User user = ctx.sessionAttribute("currentUser");
+        if (user == null) {
+            ctx.redirect("/login");
+            return;
+        }
+
+
+        Basket basket = BasketMapper.getBasket(user.getId(), connectionPool);
+
+        int cupcakeId = basket.getCupcakes();
+
+        BasketMapper.removeOneFromBasket(user.getBasketId(), cupcakeId ,connectionPool);
+
+
+
         double getTotalPrice = 0;
         for (Basket basket : basketList) {
             getTotalPrice += basket.getPrice();

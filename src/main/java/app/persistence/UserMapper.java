@@ -1,5 +1,6 @@
 package app.persistence;
 
+import app.entities.Basket;
 import app.entities.User;
 import app.exceptions.DatabaseException;
 import java.sql.Connection;
@@ -7,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class UserMapper
 {
@@ -28,6 +30,12 @@ public class UserMapper
             {
                 String role = rs.getString("role");
                 int id = rs.getInt("user_id");
+                int basketId;
+                List<Basket> baskets = BasketMapper.getBasket(id, connectionPool);
+                for (Basket basket : baskets) {
+                    basketId = basket.getBasketId();
+                }
+
                 return new User(id, email, password, role);
             } else
             {
