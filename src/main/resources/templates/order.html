@@ -40,7 +40,7 @@
     </div>
 </header>
 
-<h1 th:text="${cupcakeName}">Cupcake</h1>
+<h1 id="cupcake-name-title" th:text="${cupcakeName}">Cupcake</h1>
 <div class="cupcake-maker">
     <div class="cupcake-arrow-left">
         <svg class="left-arrows" xmlns="http://www.w3.org/2000/svg" width="59" height="59" viewBox="0 0 59 59"
@@ -82,7 +82,7 @@
                     </label>
                     <label class="flavours-box">
                         <input type="radio" name="top" value="Rum & Raisin" class="hidden-radio">
-                        <span class="flavours">Rum & Raisin</span>
+                        <span class="flavours">Rum/Raisin</span>
                     </label>
                     <label class="flavours-box">
                         <input type="radio" name="top" value="Orange" class="hidden-radio">
@@ -94,7 +94,7 @@
                     </label>
                     <label class="flavours-box">
                         <input type="radio" name="top" value="Blue Cheese" class="hidden-radio">
-                        <span class="flavours">Blue Cheese</span>
+                        <span class="flavours">Blue cheese</span>
                     </label>
                 </div>
             </div>
@@ -161,14 +161,24 @@
         <div class="basket-list-box">
             <h2>Oversigt</h2>
             <div class="basket-list">
-                <th:block class="basket-load-web" th:each="b : ${basketList}">
+                <th:block class="basket-load-web" th:each="cupcake : ${basketList}">
                     <div class="basket-list-product-box">
+                        <div>
                         <div class="first-line-styling">
-                            <a class="name-price" th:text="${b.getAmountAndName}"></a>
-                            <a class="name-price" th:text="${b.getPrice+' kr'}"></a>
+                            <a class="name-price" th:text="${cupcake.getAmount +' '+ cupcake.getName}"></a>
+                            <div class="remove-and-price">
+                            <a class="name-price" th:text="${(cupcake.getPrice*cupcake.getAmount) +' kr'}"></a>
+<!--                            <a  th:onclick="|window.location.href='@{/renderBasket}'|"-->
+<!--                                    type="button">- -->
+<!--                            </a>-->
+                                <form th:action="@{/removeFromBasketOrder}" method="post">
+                                    <input type="hidden" name="cupcakeIdOrder" th:value="${cupcake.getCupcakeId}"/>
+                                    <button id="remove-from-basket" type="submit">-</button>
+                                </form>
+                            </div>
                         </div>
-                        <a class="ingredients" th:text="${b.getTopAndBottom}"></a>
-                        <a></a>
+                        <a class="ingredients" th:text="${cupcake.getTop+' '+cupcake.getBottom}"></a>
+                        </div>
                     </div>
                 </th:block>
             </div>
@@ -201,13 +211,13 @@
 <h1 class="overview-mobile">Oversigt</h1>
 
 <div class="basket-box">
-    <th:block class="basket-load-mobile" th:each="order : ${basketList}">
+    <th:block class="basket-load-mobile" th:each="cupcake : ${basketList}">
         <div class="basket-list-product-box">
             <div class="first-line-styling">
-                <a class="name-price" th:text="${order.getAmountAndName}"></a>
-                <a class="name-price" th:text="${order.getPrice+' kr'}"></a>
+                <a class="name-price" th:text="${cupcake.getAmount + cupcake.getName}"></a>
+                <a class="name-price" th:text="${cupcake.getPrice+' kr'}"></a>
             </div>
-            <a class="ingredients" th:text="${order.getTopAndBottom}"></a>
+            <a class="ingredients" th:text="${cupcake.getTop+' '+cupcake.getBottom}"></a>
             <a></a>
         </div>
     </th:block>
@@ -225,6 +235,19 @@
     <p>din@mail.dk</p>
 </footer>
 
+<script th:inline="javascript">
+    const cupcakeList = /*[[${allCupcakes}]]*/ [];
+    const cupcakeNames = {};
 
+    cupcakeList.forEach(c => {
+        const trimTop = c.top.split(' (')[0].trim();
+        const trimBottom = c.bottom.split(' (')[0].trim();
+
+        const key = trimTop + "|" + trimBottom;
+
+        cupcakeNames[key] = c.name;
+    });
+</script>
+<script src="/js/orderPage.js"></script>
 </body>
 </html>

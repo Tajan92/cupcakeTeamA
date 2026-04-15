@@ -1,5 +1,6 @@
 package app.persistence;
 
+import app.entities.Basket;
 import app.entities.User;
 import app.exceptions.DatabaseException;
 
@@ -8,8 +9,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
-public class UserMapper {
+public class UserMapper
+{
 
     public static User login(String email, String password, app.persistence.ConnectionPool connectionPool) throws DatabaseException {
         String sql = "select * from users where email=? and password=?";
@@ -25,16 +28,28 @@ public class UserMapper {
             if (rs.next()) {
                 String role = rs.getString("role");
                 int id = rs.getInt("user_id");
-                return new User(id, email, password, role);
-            } else {
+
+                int basketId;
+                Basket basket = BasketMapper.getBasket(id, connectionPool);
+                basketId = basket.getBasketId();
+
+                return new User(id, email, password, role, basketId);
+
+
+
+            } else
+            {
                 throw new DatabaseException("Fejl i login. Prøv igen");
             }
-        } catch (SQLException e) {
+        }
+        catch (SQLException e)
+        {
             throw new DatabaseException("DB fejl", e.getMessage());
         }
     }
 
-    public static void createuser(String email, String password, String role, double balance, ConnectionPool connectionPool) throws DatabaseException {
+    public static void createuser(String email, String password, String role, double balance, ConnectionPool connectionPool) throws DatabaseException
+    {
         String sql = "insert into users (password, email, role, balance) values (?,?,?,?)";
 
         try (Connection connection = connectionPool.getConnection();
@@ -48,9 +63,11 @@ public class UserMapper {
             if (rowsAffected != 1) {
                 throw new DatabaseException("Fejl ved oprettelse af ny bruger");
             }
-        } catch (SQLException e) {
+        }
+        catch (SQLException e) {
             String msg = "Der er sket en fejl. Prøv igen";
-            if (e.getMessage().startsWith("ERROR: duplicate key value ")) {
+            if (e.getMessage().startsWith("ERROR: duplicate key value "))
+            {
                 msg = "Brugernavnet findes allerede. Vælg et andet";
             }
             throw new DatabaseException(msg, e.getMessage());
@@ -78,17 +95,18 @@ public class UserMapper {
         }
     }
 
-    public static void changeBalance(int userid, double balance, ConnectionPool connectionPool) throws DatabaseException {
+    public static void addBalance(int userid, double balance, ConnectionPool connectionPool) throws DatabaseException {
 
         String sql = "UPDATE users SET balance = ? WHERE user_id = ?;";
 
         try (Connection connection = connectionPool.getConnection();
-             PreparedStatement ps = connection.prepareStatement(sql)) {
+             PreparedStatement ps = connection.prepareStatement(sql))
+        {
             ps.setDouble(1, balance);
             ps.setInt(2, userid);
 
             int rowsAffected = ps.executeUpdate();
-            if (rowsAffected != 1) {
+            if (rowsAffected != 1){
                 throw new DatabaseException("Could not alter balance");
             }
         } catch (SQLException | DatabaseException e) {
@@ -98,13 +116,14 @@ public class UserMapper {
 
     }
 
-    public static double getCurrentBalance(int userId, ConnectionPool connectionPool) throws DatabaseException {
+    public static double getCurrentBalance(int userId, ConnectionPool connectionPool) throws DatabaseException{
 
         double balance = 0;
         String sql = "SELECT balance FROM users WHERE user_id = ? ";
 
         try (Connection connection = connectionPool.getConnection();
-             PreparedStatement ps = connection.prepareStatement(sql)) {
+            PreparedStatement ps = connection.prepareStatement(sql))
+        {
             ps.setInt(1, userId);
             ResultSet rs = ps.executeQuery();
 
@@ -112,7 +131,9 @@ public class UserMapper {
                 balance = rs.getDouble("balance");
             }
             return balance;
-        } catch (SQLException e) {
+        }
+
+        catch (SQLException e) {
             throw new DatabaseException("Error altering balance", e.getMessage());
         }
     }
