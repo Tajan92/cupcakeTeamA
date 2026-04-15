@@ -6,7 +6,9 @@ h1 {
     color: #C97BB2;
 
 }
-
+form {
+    display: contents;
+}
 .cupcake-maker {
     display: flex;
 }
@@ -296,6 +298,13 @@ h2, h3, .basket-button-web, .checkout-button-web, .basket-load-web, .flavours,
         min-height: 2.5rem;
         background-color: white;
         border-radius: 22.8rem;
+        cursor: pointer;
+    }
+    .flavours-box:has(.hidden-radio:checked) {
+        background-color: var(--menu-text-color);
+    }
+    .flavours-box:has(.hidden-radio:checked) .flavours {
+        color: white;
     }
 
     .flavours {
@@ -310,6 +319,8 @@ h2, h3, .basket-button-web, .checkout-button-web, .basket-load-web, .flavours,
         font-style: normal;
         font-weight: 530;
         line-height: normal;
+
+        pointer-events: none;
     }
 
     #order-pay-button {
@@ -352,4 +363,9 @@ h2, h3, .basket-button-web, .checkout-button-web, .basket-load-web, .flavours,
     .ingredients {
         font-size: 2.7rem;
     }
+
+}
+
+.hidden-radio {
+    display: none;
 }
