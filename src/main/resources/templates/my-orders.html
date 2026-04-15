@@ -44,7 +44,7 @@
     <div class="white-box">
 
             <div class="my-orders-panel">
-                <div class="panel-header" th:text="${selectedUser != null ? selectedUser.email + 's Orders' : 'Alle ordrer'}">
+                <div class="panel-header" th:text="${selectedUser != null ? selectedUser.email + 's Orders' : 'Mine Ordrer'}">
                     Mine ordrer
                 </div>
                 <div class="order-item">
@@ -60,7 +60,7 @@
     </div>
 </main>
 
-
+<div th:replace="~{fragments :: footer}"></div>
 
 </body>
 </html>

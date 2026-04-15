@@ -10,9 +10,9 @@
     background-color: #ffffff;
     width: 95%;
     max-width: 1800px;
-    min-height: 60vh;
+    min-height: 50vh;
     border-radius: 2rem;
-    padding: 40px;
+    padding: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
@@ -25,7 +25,7 @@
     width: 100%;
 }
 
-.customer-sidebar{
+.customer-sidebar {
     display: flex;
     flex-direction: column;
     max-height: 700px;
@@ -83,7 +83,7 @@
     max-height: 700px;
 }
 
-.customer-item{
+.customer-item {
     overflow-y: auto;
     overflow-x: hidden;
     flex: 1;
@@ -114,3 +114,76 @@
     font-weight: bold;
     cursor: pointer;
 }
+
+.balance-box {
+    display: none;
+}
+
+.balance-box-active {
+    display: block;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    width: 51.61438rem;
+    height: 30.375rem;
+    border-radius: 1.51rem;
+    border: 1.611px solid #F0F;
+    background: #FFF;
+}
+
+
+#balance-input {
+    border-radius: 0.92763rem;
+    border: 0.989px solid #E8D8E8;
+    background: #C97BB2;
+    width: 33.875rem;
+    height: 5.75rem;
+    color: white;
+    font-size: 2rem;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+#balance-input::placeholder {
+    color: white;
+}
+
+
+#balance-add-button {
+    border-radius: 0.92763rem;
+    border: 0.989px solid #E8D8E8;
+    background: #C97BB2;
+    width: 17.875rem;
+    height: 5.75rem;
+    color: white;
+    font-size: 2rem;
+    margin-top: 4rem;
+}
+
+.balance-box-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+#balance-box-header {
+    font-size: 2.5rem;
+    color: black;
+    font-family: var(--body-font), sans-serif;
+}
+
+#cancel-button {
+    border-radius: 0.92763rem;
+    border: 0.989px solid #E8D8E8;
+    background: #C97BB2;
+    color: white;
+    font-size: 2.57075rem;
+    width: 3.0625rem;
+    height: 3.8125rem;
+    position: absolute;
+}
+
+
