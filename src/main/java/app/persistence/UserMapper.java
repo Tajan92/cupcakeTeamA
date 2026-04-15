@@ -30,13 +30,15 @@ public class UserMapper
             {
                 String role = rs.getString("role");
                 int id = rs.getInt("user_id");
-                int basketId;
-                List<Basket> baskets = BasketMapper.getBasket(id, connectionPool);
-                for (Basket basket : baskets) {
-                    basketId = basket.getBasketId();
-                }
 
-                return new User(id, email, password, role);
+                int basketId;
+                Basket basket = BasketMapper.getBasket(id, connectionPool);
+                basketId = basket.getBasketId();
+
+                return new User(id, email, password, role, basketId);
+
+
+
             } else
             {
                 throw new DatabaseException("Fejl i login. Prøv igen");

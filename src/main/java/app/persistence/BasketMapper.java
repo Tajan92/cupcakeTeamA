@@ -15,7 +15,7 @@ import java.util.List;
 
 public class BasketMapper {
     public static Basket getBasket(int userId, ConnectionPool connectionPool) throws DatabaseException {
-        String sql = "SELECT u.user_id, bc.quantity, bc.basket_id, c.cupcake_name, c.price, c.top, c.bottom FROM users u\n" +
+        String sql = "SELECT u.user_id, bc.quantity, bc.basket_id, c.cupcake_name,c.cupcake_id, c.price, c.top, c.bottom FROM users u\n" +
                 "JOIN basket b ON u.user_id = b.user_id\n" +
                 "JOIN basket_cupcake bc ON b.basket_id = bc.basket_id\n" +
                 "JOIN cupcake c ON bc.cupcake_id = c.cupcake_id\n" +

@@ -4,7 +4,7 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public class Cupcake {
-    int id;
+    int cupcakeId;
     String name;
     String top;
     String bottom;
@@ -12,7 +12,7 @@ public class Cupcake {
     int amount;
 
     public Cupcake(int id, String name, String top, String bottom, double price) {
-        this.id = id;
+        this.cupcakeId = id;
         this.name = name;
         this.top = top;
         this.bottom = bottom;
