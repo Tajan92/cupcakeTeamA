@@ -5,6 +5,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class CupcakeMapper {
@@ -31,6 +33,29 @@ public class CupcakeMapper {
             }
         } catch (SQLException e) {
             throw new DatabaseException("A problem occurred trying to get cupcakes: ", e.getMessage());
+        }
+    }
+
+    public static List<Cupcake> getAllCupcakes(ConnectionPool connectionPool) throws DatabaseException {
+        String sql = "SELECT cupcake_id, cupcake_name, top, bottom, price FROM cupcake";
+        List<Cupcake> cupcakes = new ArrayList<>();
+        try (Connection connection = connectionPool.getConnection();
+             PreparedStatement ps = connection.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                int cupcakeId = rs.getInt("cupcake_id");
+                String name = rs.getString("cupcake_name");
+                String top = rs.getString("top");
+                String bottom = rs.getString("bottom");
+                double price = rs.getDouble("price");
+
+                Cupcake cupcake = new Cupcake(cupcakeId, name, top, bottom, price);
+
+                cupcakes.add(cupcake);
+            }
+            return cupcakes;
+        } catch (SQLException e) {
+            throw new DatabaseException("Could not get cupcakes: ", e.getMessage());
         }
     }
 }

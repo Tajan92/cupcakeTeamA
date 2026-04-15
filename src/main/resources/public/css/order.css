@@ -154,9 +154,19 @@ form {
     max-height: 18rem;
     overflow: auto;
 }
-
+.order-button-box {
+    gap: 1rem;
+    display: flex;
+    align-self: center;
+    justify-self: center;
+    margin-top: auto;
+    margin-bottom: 2rem;
+    background-color: var(--vanilla-white-color);
+    border-radius: var(--button-border);
+    width: 20rem;
+}
 h2, h3, .basket-button-web, .checkout-button-web, .basket-load-web, .flavours,
-.pay-button-box, #order-pay-button, .side-boxes, #total-payment-web {
+ #order-button, .side-boxes, #total-payment-web {
     display: none;
 }
 
@@ -323,12 +333,12 @@ h2, h3, .basket-button-web, .checkout-button-web, .basket-load-web, .flavours,
         pointer-events: none;
     }
 
-    #order-pay-button {
+    #order-button {
         display: flex;
         align-items: center;
         justify-content: center;
         font-size: 2rem;
-        color: var(--main-button-color);
+        color: var(--vanilla-white-color);
         height: 3.5rem;
         border: none;
         text-decoration: none;
