@@ -32,7 +32,7 @@ public class BasketMapper {
                     String name = rs.getString("cupcake_name");
                     double price = rs.getDouble("price") * quantity;
 
-                    String amountAndName = (int)quantity + " x " + name;
+                    String amountAndName = (int) quantity + " x " + name;
                     String topAndBottom = rs.getString("top") + " with " + rs.getString("bottom");
 
                     myBasket.add(new Basket(amountAndName, price, topAndBottom));
@@ -45,23 +45,20 @@ public class BasketMapper {
     }
 
     public static void addToBasket(int id, int cupcake_id, ConnectionPool connectionPool) throws DatabaseException {
-        String sql = "INSERT INTO basket_cupcake (basket_id, cupcake_id, quantity) \n" +
-                "VALUES (?, ?, 1)\n" +
-                "ON CONFLICT (cupcake_id) \n" +
+        String sql = "INSERT INTO basket_cupcake (basket_id, cupcake_id, quantity) " +
+                "VALUES (?, ?, 1) " +
+                "ON CONFLICT (basket_id, cupcake_id) " +
                 "DO UPDATE SET quantity = basket_cupcake.quantity + 1;";
 
         try (Connection connection = connectionPool.getConnection();
-             PreparedStatement ps = connection.prepareStatement(sql);) {
+             PreparedStatement ps = connection.prepareStatement(sql)) {
+
             ps.setInt(1, id);
             ps.setInt(2, cupcake_id);
-            ps.setInt(3, 1); // 1 is quantity for first cupcake id added
 
-            int rowsAffected = ps.executeUpdate();
-            if (rowsAffected != 1){
-                throw new DatabaseException("Missing details in addToBasket");
-            }
+            ps.executeUpdate();
         } catch (SQLException e) {
-            throw new DatabaseException("Error adding to basket" + e.getMessage());
+            throw new DatabaseException("Error adding to basket: " + e.getMessage());
         }
     }
 }

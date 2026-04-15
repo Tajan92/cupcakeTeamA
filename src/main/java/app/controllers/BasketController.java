@@ -16,6 +16,7 @@ public class BasketController {
 
     public static void addRoutes(Javalin app, ConnectionPool connectionPool) {
         app.post("/addToBasket", ctx -> makeCupcake(ctx, connectionPool));
+        app.get("/order", ctx -> listUserBasketInOrder(ctx, connectionPool));
     }
 public static void update (Context ctx, ConnectionPool connectionPool) throws DatabaseException {
         makeCupcake(ctx, connectionPool);
@@ -28,21 +29,22 @@ public static void update (Context ctx, ConnectionPool connectionPool) throws Da
             ctx.redirect("/login");
             return;
         }
+
         String top = ctx.formParam("top");
         String bottom = ctx.formParam("bottom");
-        if (top == null && bottom == null){
+        if (top == null){
             top = "Chocolate";
+        }
+        if (bottom == null){
             bottom = "Vanilla";
         }
-        System.out.println(top);
         Cupcake cupcake = CupcakeMapper.getCupcake(top, bottom, connectionPool);
 
         if (cupcake != null) {
-            ctx.attribute("cupcakeName", cupcake.getName());
-        } else {
-            ctx.attribute("cupcakeName", "Cupcake ikke fundet");
+            BasketMapper.addToBasket(user.getId(), cupcake.getId(), connectionPool);
         }
-        ctx.render("order.html");
+
+        listUserBasketInOrder(ctx, connectionPool);
     }
 
     public static void listUserBasketInOrder(Context ctx, ConnectionPool connectionPool) throws DatabaseException {
@@ -51,13 +53,19 @@ public static void update (Context ctx, ConnectionPool connectionPool) throws Da
             ctx.redirect("/login");
             return;
         }
+
+        List<Cupcake> allCupcakes = CupcakeMapper.getAllCupcakes(connectionPool);
         List<Basket> basketList = BasketMapper.getBasket(user.getId(), connectionPool);
         double getTotalPrice = 0;
+
         for (Basket basket : basketList) {
             getTotalPrice += basket.getPrice();
         }
-        ctx.attribute("getTotalPrice", getTotalPrice);
+
+        ctx.attribute("allCupcakes", allCupcakes);
         ctx.attribute("basketList", basketList);
+        ctx.attribute("getTotalPrice", getTotalPrice);
+
         ctx.render("order.html");
     }
 

@@ -40,7 +40,7 @@
     </div>
 </header>
 
-<h1 th:text="${cupcakeName}">Cupcake</h1>
+<h1 id="cupcake-name-title" th:text="${cupcakeName}">Cupcake</h1>
 <div class="cupcake-maker">
     <div class="cupcake-arrow-left">
         <svg class="left-arrows" xmlns="http://www.w3.org/2000/svg" width="59" height="59" viewBox="0 0 59 59"
@@ -82,7 +82,7 @@
                     </label>
                     <label class="flavours-box">
                         <input type="radio" name="top" value="Rum & Raisin" class="hidden-radio">
-                        <span class="flavours">Rum & Raisin</span>
+                        <span class="flavours">Rum/Raisin</span>
                     </label>
                     <label class="flavours-box">
                         <input type="radio" name="top" value="Orange" class="hidden-radio">
@@ -94,7 +94,7 @@
                     </label>
                     <label class="flavours-box">
                         <input type="radio" name="top" value="Blue Cheese" class="hidden-radio">
-                        <span class="flavours">Blue Cheese</span>
+                        <span class="flavours">Blue cheese</span>
                     </label>
                 </div>
             </div>
@@ -225,6 +225,19 @@
     <p>din@mail.dk</p>
 </footer>
 
+<script th:inline="javascript">
+    const cupcakeList = /*[[${allCupcakes}]]*/ [];
+    const cupcakeNames = {};
 
+    cupcakeList.forEach(c => {
+        const trimTop = c.top.split(' (')[0].trim();
+        const trimBottom = c.bottom.split(' (')[0].trim();
+
+        const key = trimTop + "|" + trimBottom;
+
+        cupcakeNames[key] = c.name;
+    });
+</script>
+<script src="/js/orderPage.js"></script>
 </body>
 </html>
