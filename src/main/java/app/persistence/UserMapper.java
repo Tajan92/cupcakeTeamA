@@ -95,7 +95,7 @@ public class UserMapper
         }
     }
 
-    public static void addBalance(int userid, double balance, ConnectionPool connectionPool) throws DatabaseException {
+    public static void changeBalance(int userid, double balance, ConnectionPool connectionPool) throws DatabaseException {
 
         String sql = "UPDATE users SET balance = ? WHERE user_id = ?;";
 

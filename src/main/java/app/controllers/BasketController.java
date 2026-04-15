@@ -129,11 +129,9 @@ public class BasketController {
 
         OrderMapper.createOrderLines(orderId, cupcakeMap, connectionPool);
 
-        List<Basket> basketList = BasketMapper.getBasket(userId, connectionPool);
-        double price = 0;
-        for (Basket basket : basketList) {
-            price+= basket.getPrice();
-        }
+        Basket basket = BasketMapper.getBasket(userId, connectionPool);
+        double price = basket.getTotalPrice();
+
 
         double currentBalance = UserMapper.getCurrentBalance(userId, connectionPool);
 
@@ -144,11 +142,13 @@ public class BasketController {
         double testBalance = UserMapper.getCurrentBalance(userId, connectionPool);
         System.out.println(testBalance);
 
-        int basketId = 0;
-        for (Basket basket : basketList) {
-            System.out.println(basket.getBasketId());
-            basketId = basket.getBasketId();
-        }
+        int basketId = user.getBasketId();
+
+        BasketMapper.resetBasket(basketId, connectionPool);
+
+        ctx.render("frontpage.html");
+
+
     }
 
     public static void removeItemFromBasketPayment(Context ctx, ConnectionPool connectionPool) throws DatabaseException {
@@ -178,19 +178,11 @@ public class BasketController {
 
         listUserBasketInOrder(ctx, connectionPool);
     }
-}
-
-        BasketMapper.resetBasket(basketId, connectionPool);
-
-        // oprette basket som ordre: vi har brug for kundeid
-        // gemme indholdet af basket som order_item, vi har brug for order id, cupcake ids og quantity
-        // trække penge fra brugers balance vi har brug for kunde id og den samlede pris baseret på cupcake id og amount
-        // Resette basket muligvis slette alle linjer fra basket cupcake
 
 
-        ctx.render("frontpage.html");
+
     }
 
 
-}
+
 
