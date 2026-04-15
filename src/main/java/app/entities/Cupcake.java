@@ -1,20 +1,12 @@
 package app.entities;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-
 @Getter
+@AllArgsConstructor
 public class Cupcake {
     int id;
     String name;
-    BottomCupcake bottomCupcake;
-    TopCupcake topCupcake;
+    String top;
+    String bottom;
     double price;
-
-    public Cupcake(int id, String name, BottomCupcake bottomCupcake, TopCupcake topCupcake) {
-        this.id = id;
-        this.name = name;
-        this.bottomCupcake = bottomCupcake;
-        this.topCupcake = topCupcake;
-        this.price = bottomCupcake.getPrice()+ topCupcake.getPrice();
-    }
-
 }

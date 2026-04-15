@@ -16,7 +16,7 @@ public class UserController {
         app.post("login", ctx -> login(ctx, connectionPool));
         app.get("frontpage", ctx -> frontpage(ctx, connectionPool));
         app.get("logout", ctx -> logout(ctx));
-        app.get("order", ctx -> BasketController.listUserBasketInOrder(ctx,connectionPool));
+        app.get("order", ctx -> BasketController.update(ctx,connectionPool));
         app.get("myOrders", ctx -> ctx.render("my-orders.html"));
         app.get("about", ctx -> ctx.render("about.html"));
         app.get("payment", ctx -> BasketController.listUserBasketInPayment(ctx,connectionPool));

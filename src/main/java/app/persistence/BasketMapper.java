@@ -43,4 +43,25 @@ public class BasketMapper {
             throw new DatabaseException("A problem occurred trying to get basket: ", e.getMessage());
         }
     }
+
+    public static void addToBasket(int id, int cupcake_id, ConnectionPool connectionPool) throws DatabaseException {
+        String sql = "INSERT INTO basket_cupcake (basket_id, cupcake_id, quantity) \n" +
+                "VALUES (?, ?, 1)\n" +
+                "ON CONFLICT (cupcake_id) \n" +
+                "DO UPDATE SET quantity = basket_cupcake.quantity + 1;";
+
+        try (Connection connection = connectionPool.getConnection();
+             PreparedStatement ps = connection.prepareStatement(sql);) {
+            ps.setInt(1, id);
+            ps.setInt(2, cupcake_id);
+            ps.setInt(3, 1); // 1 is quantity for first cupcake id added
+
+            int rowsAffected = ps.executeUpdate();
+            if (rowsAffected != 1){
+                throw new DatabaseException("Missing details in addToBasket");
+            }
+        } catch (SQLException e) {
+            throw new DatabaseException("Error adding to basket" + e.getMessage());
+        }
+    }
 }
