@@ -47,13 +47,35 @@
                 <div class="list-header">Alle brugere</div>
                 <div class="customer-item">
                 <div th:each="user : ${allUsers}" class="customer-entry">
-                    <button class="money-button">$</button>
-                    <div class="customer-label" th:text="'#' + ${user.id} + ' ' + ${user.email}">
+                    <button class="money-button"
+                            th:data-id="${user.id}"
+                            th:data-email="${user.email}"
+                            th:data-balance="${user.balance}">
+                        $</button>
+                    <div class="customer-label"  th:text="'#' + ${user.id} + ' ' + ${user.email} + ' ' + ${user.balance} + 'DKK'">
                         #123 Morten
                     </div>
                 </div>
                 </div>
             </div>
+
+            <div class="balance-box">
+                <form id="balance-box-form" th:action="@{/addBalance}" method="post">
+                    <input type="hidden" name="hiddenUserId" id="hidden-user-id">
+                    <button id="cancel-button" th:onclick="|window.location.href='@{/renderAdminPage}'|"
+                            type="button">X
+                    </button>
+                    <div class="balance-box-grid">
+                        <p id="balance-box-header">Hvor meget vil du tilføje?</p>
+                        <p id="balance-text"></p>
+                <label>
+                    <input id="balance-input" name="adminAddLabel" type="text" placeholder="eg. 100DKK..">
+                </label>
+                    <button id="balance-add-button" type="submit">Tilføj</button>
+                    </div>
+                </form>
+            </div>
+
 
             <div class="order-details-panel">
                 <div class="panel-header" th:text="${selectedUser != null ? selectedUser.email + 's Orders' : 'Alle ordrer'}">
@@ -77,7 +99,10 @@
     </div>
 </main>
 
+<div th:replace="~{fragments :: footer}"></div>
 
+<script src="/public/js/burgerMenu.js" th:src="@{js/burgerMenu.js}"></script>
+<script src="/public/js/balanceMenu.js" th:src="@{js/balanceMenu.js}"></script>
 
 </body>
 </html>
