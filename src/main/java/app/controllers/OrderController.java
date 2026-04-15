@@ -28,7 +28,10 @@ public class OrderController {
         }
         assert user != null;
             ctx.redirect("/renderAdminPage");
+    }
 
 
+    public static void createOrder(int userId, ConnectionPool connectionPool) throws DatabaseException {
+        OrderMapper.createOrder(userId, connectionPool);
     }
 }

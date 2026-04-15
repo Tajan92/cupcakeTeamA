@@ -51,9 +51,11 @@ public class AdminPageController {
         currentBalance += balanceInput;
 
 
-        UserMapper.addBalance(userId, currentBalance, connectionPool);
+        UserMapper.changeBalance(userId, currentBalance, connectionPool);
         renderAdminPage(ctx, connectionPool);
     }
+
+
 
 
 }

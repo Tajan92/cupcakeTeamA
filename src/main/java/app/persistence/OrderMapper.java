@@ -70,4 +70,59 @@ public class OrderMapper {
             throw new DatabaseException("A problem occurred trying to get all orders: ", e.getMessage());
         }
     }
+
+
+
+    public static int createOrder(int userId, ConnectionPool connectionPool)throws DatabaseException{
+
+        String sql = "INSERT into orders (user_id) VALUES (?);";
+        int orderId = 0;
+        try (Connection connection = connectionPool.getConnection();
+             PreparedStatement ps = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
+            ps.setInt(1, userId);
+
+
+            int rowsAffected = ps.executeUpdate();
+            if (rowsAffected != 1) {
+                throw new DatabaseException("Fejl ved oprettelse af ny ordrer");
+            }
+            try (ResultSet rs = ps.getGeneratedKeys()){
+                while (rs.next()){
+                    orderId = rs.getInt("order_id");
+                }
+            }
+            return orderId;
+        }
+        catch (SQLException e) {
+            String msg = "Der er sket en fejl. Prøv igen";
+            if (e.getMessage().startsWith("ERROR: duplicate key value "))
+            {
+                msg = "Ordre findes allerede.";
+            }
+            throw new DatabaseException(msg, e.getMessage());
+        }
+
+    }
+
+
+
+    public static void createOrderLines(int orderId, LinkedHashMap<Integer, Integer> cupcakeMap, ConnectionPool connectionPool) throws DatabaseException {
+
+        String sql = "INSERT INTO order_items (order_id, cupcake_id, quantity) VALUES (?, ?, ?)";
+
+        try(Connection connection = connectionPool.getConnection();
+            PreparedStatement ps = connection.prepareStatement(sql)){
+
+            for (Map.Entry<Integer, Integer> cupcake : cupcakeMap.entrySet()){
+                ps.setInt(1,orderId);
+                ps.setInt(2,cupcake.getKey());
+                ps.setInt(3,cupcake.getValue());
+                ps.addBatch();
+            }
+            ps.executeBatch();
+        } catch (SQLException e) {
+        throw new DatabaseException("Der er sket en fejl. Prøv igen", e.getMessage());
+    }
+
+    }
 }

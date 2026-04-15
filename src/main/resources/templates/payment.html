@@ -42,7 +42,8 @@
 
 <div class="payment-box">
 <p id="your-order-title">Din Bestilling</p>
-    <div class="payment-basket-list">
+    <div class="payment-basket-list">0
+        <form id="pay-form" th:action="@{/payOrder}" method="post">
         <th:block th:each="order : ${basketList}">
             <div class="basket-list-product-box">
                 <div class="first-line-styling">
@@ -53,11 +54,12 @@
                 <a></a>
             </div>
         </th:block>
+        </form>
     </div>
     <hr>
     <a id="total-payment" class="name-price" th:text="${getTotalPrice+' kr'}"></a>
     <div class="pay-button-box">
-    <a id="pay-button">Betal</a>
+   <button  id="pay-button" form="pay-form" type="submit">Betal</button>
     </div>
 </div>
 

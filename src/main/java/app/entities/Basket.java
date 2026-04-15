@@ -5,6 +5,7 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public class Basket {
+    private int basketId;
     private String amountAndName;
     private double price;
     private String topAndBottom;
