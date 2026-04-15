@@ -44,7 +44,7 @@
 
 
 <footer th:fragment="footer">
-    <p>din@mail.dk</p>
+    <p>Logget ind som: <span th:text="${session.currentUser.email}"></span></p>
 </footer>
 
 <body>

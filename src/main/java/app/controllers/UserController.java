@@ -65,6 +65,7 @@ public class UserController {
         try {
             User user = UserMapper.login(email, password, connectionPool);
             ctx.sessionAttribute("currentUser", user);
+            ctx.sessionAttribute("userEmail", email);
             if (user.getRole().equals("admin")){
                 ctx.redirect("/renderAdminPage");
             }else {
