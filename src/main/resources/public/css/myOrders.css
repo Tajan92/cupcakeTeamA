@@ -1,4 +1,4 @@
-.order-overview{
+.order-overview {
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -6,7 +6,7 @@
     padding: 40px 20px;
 }
 
-.my-orders-panel{
+.my-orders-panel {
     background-color: #D18BB8;
     border-radius: 15px;
     padding-left: 20px;
@@ -14,13 +14,50 @@
     padding-right: 20px;
     display: flex;
     flex-direction: column;
-    max-height: 700px;
+    min-height: 60vh;
+    max-height: 60vh;
 }
 
-.white-box{
+.my-orders-item {
+    background-color: rgba(0, 0, 0, 0.15);
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
+    flex: 1;
+    min-height: 0;
+    gap: 3vh;
+}
+
+.my-order-informations{
+    margin-left: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.order-form {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--vanilla-white-color);
+    border: #D18BB8;
+    margin: 1rem;
+    border-radius: 2rem;
+}
+
+.my-order-labels {
+    margin-left: 2rem;
+    color: #7A5A7A;
+    white-space: pre;
+}
+
+.white-box {
     background-color: #ffffff;
     width: 95%;
-    max-width: 800px;
+    max-width: 70vw;
     min-height: 60vh;
     border-radius: 2rem;
     padding: 40px;

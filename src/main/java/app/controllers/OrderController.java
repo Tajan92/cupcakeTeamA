@@ -16,7 +16,7 @@ import java.util.Map;
 
 public class OrderController {
 
-    public static void addRoutes(Javalin app, ConnectionPool connectionPool){
+    public static void addRoutes(Javalin app, ConnectionPool connectionPool) {
         app.post("/removeOrder", ctx -> deleteOrder(ctx, connectionPool));
         app.get("/renderOrders", ctx -> renderOrders(ctx, connectionPool));
     }
@@ -33,7 +33,7 @@ public class OrderController {
 
         }
         assert user != null;
-            ctx.redirect("/renderAdminPage");
+        ctx.redirect("/renderAdminPage");
     }
 
 
@@ -48,12 +48,20 @@ public class OrderController {
         int userId = user.getId();
 
         ArrayList<Integer> currentUserOrders = OrderMapper.getAllOrdersByUserId(userId, connectionPool);
-
+        double totalPrice = 0;
         Map<Integer, List<Cupcake>> orderCupcakeMap = new LinkedHashMap<>();
         for (Integer currentUserOrder : currentUserOrders) {
             orderCupcakeMap.put(currentUserOrder, CupcakeMapper.getAllCupcakesByOrderId(currentUserOrder, connectionPool));
         }
 
+        for (Map.Entry<Integer, List<Cupcake>> entry : orderCupcakeMap.entrySet()) {
+            List<Cupcake> cupcakesInOrder = entry.getValue();
+            for (Cupcake cupcake : cupcakesInOrder) {
+                totalPrice += cupcake.getPrice();
+            }
+        }
+
+        ctx.attribute("totalPrice", totalPrice);
         ctx.attribute("currentUserOrders", orderCupcakeMap);
         ctx.render("my-orders.html");
 

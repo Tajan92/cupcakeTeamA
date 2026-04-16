@@ -19,25 +19,25 @@
 <main class="order-overview">
     <div class="white-box">
 
-            <div class="my-orders-panel">
-                <div class="panel-header" th:text="${selectedUser != null ? selectedUser.email + 's Orders' : 'Mine Ordrer'}">
-                    Mine ordrer
-                </div>
-                <div class="order-item">
-                    <th:block th:each="order : ${currentUserOrders}">
-                        <div class="order-form">
-                            <span th:text="'Order ID: #' + ${order.key}">Order ID</span>
-
-                            <th:block th:each="cupcake : ${order.value}">
-                                <span th:text="${cupcake.name}">Cupcake Name</span>
-                                <span th:text="${cupcake.amount}">Quantity</span>
-                                <span th:text="${(cupcake.price*cupcake.amount)}">Price</span>
-
-                            </th:block>
-                        </div>
-                    </th:block>
-                </div>
+        <div class="my-orders-panel">
+            <div class="panel-header"
+                 th:text="${selectedUser != null ? selectedUser.email + 's Orders' : 'Mine Ordrer'}">
+                Mine ordrer
             </div>
+            <div class="my-orders-item">
+                <th:block th:each="order : ${currentUserOrders}">
+                    <div class="order-form">
+                        <span class="my-order-labels" th:text="'Order ID: #' + ${order.key}">Order ID</span>
+                        <div class="my-order-informations">
+                            <th:block th:each="cupcake : ${order.value}">
+                                <span class="my-order-labels" th:text="${' | ' + cupcake.name + ' x '+cupcake.amount + ' ' + 'Pris: ' + (cupcake.price*cupcake.amount)}">Cupcake Name</span>
+                            </th:block>
+                                <span class="my-order-labels" th:text="${' | Total: '+totalPrice}"></span>
+                        </div>
+                    </div>
+                </th:block>
+            </div>
+        </div>
     </div>
 </main>
 
