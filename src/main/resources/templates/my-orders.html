@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Admin</title>
@@ -48,11 +48,16 @@
                     Mine ordrer
                 </div>
                 <div class="order-item">
-                    <th:block th:each="order : ${allOrders}">
+                    <th:block th:each="order : ${currentUserOrders}">
                         <div class="order-form">
-                            <span th:text="'Order ID: #' + ${order.orderId} + ' User ID: #' + ${order.userId} + ' Cupcake Ids: #' + ${order.cupcakeIds}">
-                                #1753
-                            </span>
+                            <span th:text="'Order ID: #' + ${order.key}">Order ID</span>
+
+                            <th:block th:each="cupcake : ${order.value}">
+                                <span th:text="${cupcake.name}">Cupcake Name</span>
+                                <span th:text="${cupcake.amount}">Quantity</span>
+                                <span th:text="${(cupcake.price*cupcake.amount)}">Price</span>
+
+                            </th:block>
                         </div>
                     </th:block>
                 </div>

@@ -12,6 +12,7 @@ import java.util.Map;
 @AllArgsConstructor
 public class Basket {
     private int basketId;
+    //The integer here is amount per cupcakes
     private LinkedHashMap<Cupcake, Integer> cupcakes;
 
 

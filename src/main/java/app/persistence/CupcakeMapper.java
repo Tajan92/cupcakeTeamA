@@ -58,4 +58,33 @@ public class CupcakeMapper {
             throw new DatabaseException("Could not get cupcakes: ", e.getMessage());
         }
     }
+
+    public static List<Cupcake> getAllCupcakesByOrderId(int orderId, ConnectionPool connectionPool) throws DatabaseException {
+        String sql = "SELECT c.cupcake_id, c.cupcake_name, c.top, c.bottom, c.price, oi.quantity \n" +
+                "FROM cupcake c\n" +
+                "JOIN order_items oi ON c.cupcake_id = oi.cupcake_id\n" +
+                "WHERE oi.order_id = ?";
+        List<Cupcake> cupcakes = new ArrayList<>();
+        try (Connection connection = connectionPool.getConnection();
+             PreparedStatement ps = connection.prepareStatement(sql);
+        ) {
+            ps.setInt(1, orderId);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int cupcakeId = rs.getInt("cupcake_id");
+                String name = rs.getString("cupcake_name");
+                String top = rs.getString("top");
+                String bottom = rs.getString("bottom");
+                double price = rs.getDouble("price");
+                int quantity = rs.getInt("quantity");
+                Cupcake cupcake = new Cupcake(cupcakeId, name, top, bottom, price, quantity);
+
+                cupcakes.add(cupcake);
+            }
+            return cupcakes;
+        } catch (SQLException e) {
+            throw new DatabaseException("Could not get cupcakes: ", e.getMessage());
+        }
+    }
+
 }

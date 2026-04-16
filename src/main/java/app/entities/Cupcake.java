@@ -18,4 +18,8 @@ public class Cupcake {
         this.bottom = bottom;
         this.price = price;
     }
+
+    public double getTotalPrice(){
+        return this.price * this.amount;
+    }
 }

@@ -50,10 +50,6 @@
                     <a class="name-price" th:text="${cupcake.getAmount+' '+cupcake.getName}"></a>
                     <div class="remove-and-price">
                         <a class="name-price" th:text="${(cupcake.getPrice * cupcake.getAmount)+' kr'}"></a>
-                        <form th:action="@{/removeFromBasketPayment}" method="post">
-                            <input type="hidden" name="cupcakeIdPayment" th:value="${cupcake.getCupcakeId}"/>
-                            <button id="remove-from-basket-pay" type="submit">-</button>
-                        </form>
                     </div>
                 </div>
                 <a class="ingredients" th:text="${cupcake.getTop+' '+cupcake.getBottom}"></a>

@@ -140,7 +140,6 @@ public class BasketController {
         UserMapper.changeBalance(userId, currentBalance, connectionPool);
 
         double testBalance = UserMapper.getCurrentBalance(userId, connectionPool);
-        System.out.println(testBalance);
 
         int basketId = user.getBasketId();
 

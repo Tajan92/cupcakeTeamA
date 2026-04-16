@@ -1,7 +1,6 @@
 package app.persistence;
 
 import app.entities.Order;
-import app.entities.User;
 import app.exceptions.DatabaseException;
 
 import java.sql.Connection;
@@ -124,5 +123,29 @@ public class OrderMapper {
         throw new DatabaseException("Der er sket en fejl. Prøv igen", e.getMessage());
     }
 
+    }
+
+    public static ArrayList<Integer> getAllOrdersByUserId(int currentUserId, ConnectionPool connectionPool) throws DatabaseException {
+        String sql = "SELECT DISTINCT orders.order_id " +
+                "FROM orders " +
+                "LEFT JOIN order_items ON orders.order_id = order_items.order_id " +
+                "WHERE orders.user_id = ?";
+        try (
+                Connection connection = connectionPool.getConnection();
+                PreparedStatement preparedStatement = connection.prepareStatement(sql)
+        ) {
+            preparedStatement.setInt(1, currentUserId);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            ArrayList<Integer> orderIds = new ArrayList<>();
+            while (rs.next()) {
+                int orderId = rs.getInt("order_id");
+                orderIds.add(orderId);
+            }
+            return orderIds;
+
+        } catch (SQLException e) {
+            throw new DatabaseException("A problem occurred trying to get all orders: ", e.getMessage());
+        }
     }
 }
