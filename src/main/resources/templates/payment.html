@@ -8,7 +8,7 @@
 
 <div class="payment-box">
 <p id="your-order-title">Din Bestilling</p>
-    <div class="payment-basket-list">0
+    <div class="payment-basket-list">
         <form id="pay-form" th:action="@{/payOrder}" method="post">
         <th:block th:each="cupcake : ${basketList}">
             <div class="basket-list-product-box">
