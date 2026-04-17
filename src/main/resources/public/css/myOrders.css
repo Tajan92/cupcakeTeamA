@@ -1,3 +1,10 @@
+.panel-header{
+    font-size: 2rem;
+    font-family: var(--header-font), sans-serif;
+    color: white;
+    text-align: center;
+}
+
 .order-overview {
     display: flex;
     justify-content: center;
