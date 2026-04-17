@@ -186,4 +186,13 @@
     position: absolute;
 }
 
+.web-menu-admin{
+    display: flex;
+    flex-direction: row;
+    text-decoration: none;
+    color: var(--menu-text-color);
+}
 
+#log-ud-admin{
+
+}

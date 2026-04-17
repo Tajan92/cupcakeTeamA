@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="/public/css/order.css" th:href="@{/css/order.css}"/>
     <link rel="stylesheet" href="/public/css/about.css" th:href="@{/css/about.css}"/>
     <link rel="stylesheet" href="/public/css/payment.css" th:href="@{/css/payment.css}"/>
-    <link rel="stylesheet" href="/public/css/admin.css" th:href="@{/css/admin.css}"/>
 </head>
 
 <header th:fragment="header">
@@ -25,7 +24,6 @@
     </svg>
 
     <div class="web-menu">
-        <a id="admin" href="admin.html" th:href="@{/renderAdminPage}">Admin</a>
         <a id="forside" href="frontpage.html" th:href="@{/frontpage}">Forside</a>
         <a id="bestil" href="order.html" th:href="@{/order}">Bestil</a>
         <a id="mine-ordre" href="my-orders.html" th:href="@{/renderOrders}">Mine Ordre</a>

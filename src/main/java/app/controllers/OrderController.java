@@ -48,20 +48,23 @@ public class OrderController {
         int userId = user.getId();
 
         ArrayList<Integer> currentUserOrders = OrderMapper.getAllOrdersByUserId(userId, connectionPool);
-        double totalPrice = 0;
+
         Map<Integer, List<Cupcake>> orderCupcakeMap = new LinkedHashMap<>();
         for (Integer currentUserOrder : currentUserOrders) {
             orderCupcakeMap.put(currentUserOrder, CupcakeMapper.getAllCupcakesByOrderId(currentUserOrder, connectionPool));
         }
 
+        Map<Integer, Double> totalPricePerOrder = new LinkedHashMap<>();
+
         for (Map.Entry<Integer, List<Cupcake>> entry : orderCupcakeMap.entrySet()) {
-            List<Cupcake> cupcakesInOrder = entry.getValue();
-            for (Cupcake cupcake : cupcakesInOrder) {
-                totalPrice += cupcake.getPrice();
+            double orderTotal = 0;
+            for (Cupcake cupcake : entry.getValue()) {
+                orderTotal += cupcake.getTotalPrice();
             }
+            totalPricePerOrder.put(entry.getKey(), orderTotal);
         }
 
-        ctx.attribute("totalPrice", totalPrice);
+        ctx.attribute("totalPrices", totalPricePerOrder);
         ctx.attribute("currentUserOrders", orderCupcakeMap);
         ctx.render("my-orders.html");
 

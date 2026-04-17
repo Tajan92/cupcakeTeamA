@@ -9,6 +9,9 @@ h1 {
 form {
     display: contents;
 }
+#cupcake-name-title{
+    margin-top: 10vh;
+}
 .cupcake-maker {
     display: flex;
 }
@@ -85,6 +88,7 @@ form {
 
 .basket-button {
     align-items: center;
+    justify-items: center;
     font-weight: lighter;
     margin: 0;
 }
@@ -202,7 +206,6 @@ h2, h3, .basket-button-web, .checkout-button-web, .basket-load-web, .flavours,
     }
 
     h1 {
-        margin-top: 0;
         margin-top: 1rem;
     }
 
@@ -227,7 +230,7 @@ h2, h3, .basket-button-web, .checkout-button-web, .basket-load-web, .flavours,
     }
 
     .cupcake-maker {
-        margin-bottom: 2%;
+        margin-bottom: auto;
     }
 
     .cupcake-image {

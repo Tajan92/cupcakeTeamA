@@ -1,17 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="/public/css/variables.css" th:href="@{/css/variables.css}"/>
-    <link rel="stylesheet" href="/public/css/generalBody.css" th:href="@{/css/generalBody.css}"/>
-    <link rel="stylesheet" href="/public/css/burgerMenu.css" th:href="@{/css/burgerMenu.css}"/>
-    <link rel="stylesheet" href="/public/css/header.css" th:href="@{/css/header.css}"/>
-    <link rel="stylesheet" href="/public/css/frontpage.css" th:href="@{/css/frontpage.css}"/>
-    <link rel="stylesheet" href="/public/css/order.css" th:href="@{/css/order.css}"/>
-    <link rel="stylesheet" href="/public/css/payment.css" th:href="@{/css/payment.css}"/>
-</head>
+<div th:replace="~{fragments :: head(Forside)}"></div>
 
 <body>
 
