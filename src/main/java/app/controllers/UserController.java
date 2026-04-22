@@ -51,6 +51,7 @@ public class UserController {
             for (String errorMsg : messages) {
                 if (errorMsg != null && message.length()<95) {
                     message = message + errorMsg + " | ";
+                    System.out.println(message);
                 }
             }
             ctx.attribute("errorMessage", message);
